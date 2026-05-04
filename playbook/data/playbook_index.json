@@ -1,0 +1,551 @@
+{
+  "generated_at": "2026-05-04T03:03:50.043859+00:00",
+  "crosswords_total": 71,
+  "games_total": 5,
+  "crosswords": [
+    {
+      "title": "May The Third Be With You",
+      "slug": "5320",
+      "source_url": "https://crossword.info/dailythunder/5320",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/5320/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/5320/5320.pdf"
+    },
+    {
+      "title": "A Whole New Game",
+      "slug": "A_Whole_New_Game",
+      "source_url": "https://crossword.info/dailythunder/A_Whole_New_Game",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/A_Whole_New_Game/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/A_Whole_New_Game/A_Whole_New_Game.pdf"
+    },
+    {
+      "title": "All Over the Map",
+      "slug": "All_Over_the_Map",
+      "source_url": "https://crossword.info/dailythunder/All_Over_the_Map",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/All_Over_the_Map/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/All_Over_the_Map/All_Over_the_Map.pdf"
+    },
+    {
+      "title": "April 10 Mini",
+      "slug": "April_10_Mini",
+      "source_url": "https://crossword.info/dailythunder/April_10_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/April_10_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/April_10_Mini/April_10_Mini.pdf"
+    },
+    {
+      "title": "April 18 Mini",
+      "slug": "April_18_Mini",
+      "source_url": "https://crossword.info/dailythunder/April_18_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/April_18_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/April_18_Mini/April_18_Mini.pdf"
+    },
+    {
+      "title": "April 25 Mini",
+      "slug": "April_25_mini",
+      "source_url": "https://crossword.info/dailythunder/April_25_mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/April_25_mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/April_25_mini/April_25_mini.pdf"
+    },
+    {
+      "title": "AS Is",
+      "slug": "AS_Is",
+      "source_url": "https://crossword.info/dailythunder/AS_Is",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/AS_Is/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/AS_Is/AS_Is.pdf"
+    },
+    {
+      "title": "Block Party",
+      "slug": "Block_Party",
+      "source_url": "https://crossword.info/dailythunder/Block_Party",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Block_Party/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Block_Party/Block_Party.pdf"
+    },
+    {
+      "title": "Cha-Ching",
+      "slug": "ChaChing",
+      "source_url": "https://crossword.info/dailythunder/ChaChing",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/ChaChing/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/ChaChing/ChaChing.pdf"
+    },
+    {
+      "title": "Chicago Style",
+      "slug": "Chicago_Style",
+      "source_url": "https://crossword.info/dailythunder/Chicago_Style",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Chicago_Style/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Chicago_Style/Chicago_Style.pdf"
+    },
+    {
+      "title": "Crass",
+      "slug": "Crass",
+      "source_url": "https://crossword.info/dailythunder/Crass",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Crass/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Crass/Crass.pdf"
+    },
+    {
+      "title": "Dadding",
+      "slug": "Dadding",
+      "source_url": "https://crossword.info/dailythunder/Dadding",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Dadding/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Dadding/Dadding.pdf"
+    },
+    {
+      "title": "Deep Cuts",
+      "slug": "Deep_Cuts",
+      "source_url": "https://crossword.info/dailythunder/Deep_Cuts",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Deep_Cuts/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Deep_Cuts/Deep_Cuts.pdf"
+    },
+    {
+      "title": "Falling_Backwards",
+      "slug": "Falling_Backwards",
+      "source_url": "https://crossword.info/dailythunder/Falling_Backwards",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Falling_Backwards/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Falling_Backwards"
+    },
+    {
+      "title": "Fast Pass",
+      "slug": "Fast_Pass",
+      "source_url": "https://crossword.info/dailythunder/Fast_Pass",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Fast_Pass/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Fast_Pass/Fast_Pass.pdf"
+    },
+    {
+      "title": "Finally",
+      "slug": "Finally",
+      "source_url": "https://crossword.info/dailythunder/Finally",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Finally/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Finally/Finally.pdf"
+    },
+    {
+      "title": "First Namez",
+      "slug": "First_Names_Mini",
+      "source_url": "https://crossword.info/dailythunder/First_Names_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/First_Names_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/First_Names_Mini/First_Names_Mini.pdf"
+    },
+    {
+      "title": "First Namez",
+      "slug": "First_Namez",
+      "source_url": "https://crossword.info/dailythunder/First_Namez",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/First_Namez/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/First_Namez/First_Namez.pdf"
+    },
+    {
+      "title": "Great, Full",
+      "slug": "Great_Full",
+      "source_url": "https://crossword.info/dailythunder/Great_Full",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Great_Full/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Great_Full/Great_Full.pdf"
+    },
+    {
+      "title": "Full Heart",
+      "slug": "Heart_1",
+      "source_url": "https://crossword.info/dailythunder/Heart_1",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Heart_1/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Heart_1/Heart_1.pdf"
+    },
+    {
+      "title": "Holidaze",
+      "slug": "Holidaze",
+      "source_url": "https://crossword.info/dailythunder/Holidaze",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Holidaze/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Holidaze/Holidaze.pdf"
+    },
+    {
+      "title": "Homing In",
+      "slug": "Homing_In",
+      "source_url": "https://crossword.info/dailythunder/Homing_In",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Homing_In/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Homing_In/Homing_In.pdf"
+    },
+    {
+      "title": "In Diamond",
+      "slug": "In_Diamond",
+      "source_url": "https://crossword.info/dailythunder/In_Diamond",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/In_Diamond/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/In_Diamond/In_Diamond.pdf"
+    },
+    {
+      "title": "Independence Play",
+      "slug": "Independece_Play",
+      "source_url": "https://crossword.info/dailythunder/Independece_Play",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Independece_Play/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Independece_Play/Independece_Play.pdf"
+    },
+    {
+      "title": "It's All Connected",
+      "slug": "Its_All_Connected",
+      "source_url": "https://crossword.info/dailythunder/Its_All_Connected",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Its_All_Connected/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Its_All_Connected/Its_All_Connected.pdf"
+    },
+    {
+      "title": "The Jordan Clues",
+      "slug": "Jordan_Clues",
+      "source_url": "https://crossword.info/dailythunder/Jordan_Clues",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Jordan_Clues/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Jordan_Clues/Jordan_Clues.pdf"
+    },
+    {
+      "title": "Jordan Rivals",
+      "slug": "Jordan_Rivals",
+      "source_url": "https://crossword.info/dailythunder/Jordan_Rivals",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Jordan_Rivals/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Jordan_Rivals/Jordan_Rivals.pdf"
+    },
+    {
+      "title": "June 13 Mini",
+      "slug": "June_13_Mini",
+      "source_url": "https://crossword.info/dailythunder/June_13_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/June_13_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/June_13_Mini/June_13_Mini.pdf"
+    },
+    {
+      "title": "June 6 Mini",
+      "slug": "June_6_Mini",
+      "source_url": "https://crossword.info/dailythunder/June_6_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/June_6_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/June_6_Mini/June_6_Mini.pdf"
+    },
+    {
+      "title": "Laboring",
+      "slug": "Laboring",
+      "source_url": "https://crossword.info/dailythunder/Laboring",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Laboring/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Laboring/Laboring.pdf"
+    },
+    {
+      "title": "March 14 Mini March 14, 2021",
+      "slug": "March_14_Mini",
+      "source_url": "https://crossword.info/dailythunder/March_14_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/March_14_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/March_14_Mini/March_14_Mini.pdf"
+    },
+    {
+      "title": "March 21 Mini March 21, 2021",
+      "slug": "March_21_Mini",
+      "source_url": "https://crossword.info/dailythunder/March_21_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/March_21_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/March_21_Mini/March_21_Mini.pdf"
+    },
+    {
+      "title": "May 16 Mini",
+      "slug": "May_16_Mini",
+      "source_url": "https://crossword.info/dailythunder/May_16_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/May_16_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/May_16_Mini/May_16_Mini.pdf"
+    },
+    {
+      "title": "May 2 Mini",
+      "slug": "May_2_Mini",
+      "source_url": "https://crossword.info/dailythunder/May_2_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/May_2_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/May_2_Mini/May_2_Mini.pdf"
+    },
+    {
+      "title": "May 29 Mini",
+      "slug": "May_29_Mini",
+      "source_url": "https://crossword.info/dailythunder/May_29_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/May_29_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/May_29_Mini/May_29_Mini.pdf"
+    },
+    {
+      "title": "Messin' with Texas",
+      "slug": "Messin_with_Texas",
+      "source_url": "https://crossword.info/dailythunder/Messin_with_Texas",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Messin_with_Texas/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Messin_with_Texas/Messin_with_Texas.pdf"
+    },
+    {
+      "title": "MJ Mini",
+      "slug": "MJ_Mini",
+      "source_url": "https://crossword.info/dailythunder/MJ_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/MJ_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/MJ_Mini/MJ_Mini.pdf"
+    },
+    {
+      "title": "Mother's Day",
+      "slug": "Mothers_Day",
+      "source_url": "https://crossword.info/dailythunder/Mothers_Day",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Mothers_Day/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Mothers_Day/Mothers_Day.pdf"
+    },
+    {
+      "title": "Mother's Mini",
+      "slug": "Mothers_Mini",
+      "source_url": "https://crossword.info/dailythunder/Mothers_Mini",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Mothers_Mini/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Mothers_Mini/Mothers_Mini.pdf"
+    },
+    {
+      "title": "Mound",
+      "slug": "Mound",
+      "source_url": "https://crossword.info/dailythunder/Mound",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Mound/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Mound/Mound.pdf"
+    },
+    {
+      "title": "Naming Names",
+      "slug": "Naming_Names",
+      "source_url": "https://crossword.info/dailythunder/Naming_Names",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Naming_Names/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Naming_Names/Naming_Names.pdf"
+    },
+    {
+      "title": "Numbers One",
+      "slug": "Numbers_One",
+      "source_url": "https://crossword.info/dailythunder/Numbers_One",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Numbers_One/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Numbers_One/Numbers_One.pdf"
+    },
+    {
+      "title": "Out There",
+      "slug": "Out_There",
+      "source_url": "https://crossword.info/dailythunder/Out_There",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Out_There/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Out_There/Out_There.pdf"
+    },
+    {
+      "title": "Past and Present",
+      "slug": "Past_and_Present",
+      "source_url": "https://crossword.info/dailythunder/Past_and_Present",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Past_and_Present/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Past_and_Present/Past_and_Present.pdf"
+    },
+    {
+      "title": "Plan B",
+      "slug": "Plan_B",
+      "source_url": "https://crossword.info/dailythunder/Plan_B",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Plan_B/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Plan_B/Plan_B.pdf"
+    },
+    {
+      "title": "Potpourri",
+      "slug": "Potpourri",
+      "source_url": "https://crossword.info/dailythunder/Potpourri",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Potpourri/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Potpourri/Potpourri.pdf"
+    },
+    {
+      "title": "Puzzill",
+      "slug": "Puzzill",
+      "source_url": "https://crossword.info/dailythunder/Puzzill",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Puzzill/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Puzzill/Puzzill.pdf"
+    },
+    {
+      "title": "Rap Around",
+      "slug": "Rap_Around",
+      "source_url": "https://crossword.info/dailythunder/Rap_Around",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Rap_Around/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Rap_Around/Rap_Around.pdf"
+    },
+    {
+      "title": "Risen",
+      "slug": "Risen",
+      "source_url": "https://crossword.info/dailythunder/Risen",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Risen/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Risen/Risen.pdf"
+    },
+    {
+      "title": "Scaling",
+      "slug": "Scaling",
+      "source_url": "https://crossword.info/dailythunder/Scaling",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Scaling/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Scaling/Scaling.pdf"
+    },
+    {
+      "title": "Seedy",
+      "slug": "Seedy",
+      "source_url": "https://crossword.info/dailythunder/Seedy",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Seedy/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Seedy/Seedy.pdf"
+    },
+    {
+      "title": "Short Corners",
+      "slug": "Short_Corners",
+      "source_url": "https://crossword.info/dailythunder/Short_Corners",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Short_Corners/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Short_Corners/Short_Corners.pdf"
+    },
+    {
+      "title": "Sources",
+      "slug": "Sources",
+      "source_url": "https://crossword.info/dailythunder/Sources",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sources/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sources/Sources.pdf"
+    },
+    {
+      "title": "Spooky",
+      "slug": "Spooky",
+      "source_url": "https://crossword.info/dailythunder/Spooky",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Spooky/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Spooky/Spooky.pdf"
+    },
+    {
+      "title": "Mini: December 6, 2020",
+      "slug": "Sunday_Mini_December_6_2020",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Mini_December_6_2020",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_December_6_2020/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_December_6_2020/Sunday_Mini_December_6_2020.pdf"
+    },
+    {
+      "title": "Sunday Mini February 28, 2021",
+      "slug": "Sunday_Mini_February_28_2021",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Mini_February_28_2021",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_February_28_2021/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_February_28_2021/Sunday_Mini_February_28_2021.pdf"
+    },
+    {
+      "title": "Sunday Mini January 10, 2021",
+      "slug": "Sunday_Mini_January_10_2021",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Mini_January_10_2021",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_January_10_2021/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_January_10_2021/Sunday_Mini_January_10_2021.pdf"
+    },
+    {
+      "title": "Sunday Mini January 3, 2021",
+      "slug": "Sunday_Mini_January_3_2021",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Mini_January_3_2021",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_January_3_2021/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_January_3_2021/Sunday_Mini_January_3_2021.pdf"
+    },
+    {
+      "title": "Mini: June 7, 2020",
+      "slug": "Sunday_Mini_June_7_2020",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Mini_June_7_2020",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_June_7_2020/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_June_7_2020/Sunday_Mini_June_7_2020.pdf"
+    },
+    {
+      "title": "Mini: May 17, 2020",
+      "slug": "Sunday_Mini_May_17_2020",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Mini_May_17_2020",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_May_17_2020/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Mini_May_17_2020/Sunday_Mini_May_17_2020.pdf"
+    },
+    {
+      "title": "Sunday Pretzel",
+      "slug": "Sunday_Pretzel",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Pretzel",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Pretzel/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Pretzel"
+    },
+    {
+      "title": "Sunday Stew - June 28, 2020",
+      "slug": "Sunday_Stew__June_28_2020",
+      "source_url": "https://crossword.info/dailythunder/Sunday_Stew__June_28_2020",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Stew__June_28_2020/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Sunday_Stew__June_28_2020/Sunday_Stew__June_28_2020.pdf"
+    },
+    {
+      "title": "The Chain",
+      "slug": "The_Chain",
+      "source_url": "https://crossword.info/dailythunder/The_Chain",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/The_Chain/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/The_Chain/The_Chain.pdf"
+    },
+    {
+      "title": "The Mini Monty",
+      "slug": "The_Mini_Monty",
+      "source_url": "https://crossword.info/dailythunder/The_Mini_Monty",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/The_Mini_Monty/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/The_Mini_Monty/The_Mini_Monty.pdf"
+    },
+    {
+      "title": "The Long and Short of It",
+      "slug": "The_Short_and_Long_of_It",
+      "source_url": "https://crossword.info/dailythunder/The_Short_and_Long_of_It",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/The_Short_and_Long_of_It/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/The_Short_and_Long_of_It/The_Short_and_Long_of_It.pdf"
+    },
+    {
+      "title": "Thunder Past",
+      "slug": "Thunder_Past",
+      "source_url": "https://crossword.info/dailythunder/Thunder_Past",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Thunder_Past/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Thunder_Past/Thunder_Past.pdf"
+    },
+    {
+      "title": "Time and Place",
+      "slug": "Time_and_Place",
+      "source_url": "https://crossword.info/dailythunder/Time_and_Place",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Time_and_Place/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Time_and_Place/Time_and_Place.pdf"
+    },
+    {
+      "title": "Two Forward",
+      "slug": "Two_Forward",
+      "source_url": "https://crossword.info/dailythunder/Two_Forward",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Two_Forward/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Two_Forward/Two_Forward.pdf"
+    },
+    {
+      "title": "Uniform",
+      "slug": "Uniform",
+      "source_url": "https://crossword.info/dailythunder/Uniform",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Uniform/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Uniform/Uniform.pdf"
+    },
+    {
+      "title": "Wee Men",
+      "slug": "Wee_Men",
+      "source_url": "https://crossword.info/dailythunder/Wee_Men",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Wee_Men/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Wee_Men/Wee_Men.pdf"
+    },
+    {
+      "title": "X'd Out",
+      "slug": "Xd_Out",
+      "source_url": "https://crossword.info/dailythunder/Xd_Out",
+      "wrapper_path": "puzzle_archive/crossword_info_import/crosswords_archive/Xd_Out/index.html",
+      "pdf_path": "puzzle_archive/crossword_info_import/crosswords_archive/Xd_Out/Xd_Out.pdf"
+    }
+  ],
+  "games": [
+    {
+      "game": "From the Logo",
+      "title": "Daily Thunder Playbook: From the Logo",
+      "url": "https://www.dailythunder.com/daily-thunder-playbook-from-the-logo/",
+      "published_at": "2026-02-18T12:30:09.000Z",
+      "tags": [
+        "Playbook"
+      ]
+    },
+    {
+      "game": "Sly",
+      "title": "Daily Thunder Playbook: Sly",
+      "url": "https://www.dailythunder.com/daily-thunder-playbook-sly/",
+      "published_at": "2026-02-19T11:30:20.000Z",
+      "tags": [
+        "Playbook"
+      ]
+    },
+    {
+      "game": "Then and Now",
+      "title": "Daily Thunder Playbook: Then and Now",
+      "url": "https://www.dailythunder.com/daily-thunder-playbook-then-and-now/",
+      "published_at": "2026-03-06T12:07:50.000Z",
+      "tags": [
+        "Playbook"
+      ]
+    },
+    {
+      "game": "ShaiSweeper",
+      "title": "Daily Thunder Playbook: ShaiSweeper",
+      "url": "https://www.dailythunder.com/daily-thunder-playbook-shaisweeper/",
+      "published_at": "2026-03-16T01:42:30.000Z",
+      "tags": [
+        "Playbook"
+      ]
+    },
+    {
+      "game": "ShaiSweeper+",
+      "title": "Daily Thunder Playbook: ShaiSweeper+",
+      "url": "https://www.dailythunder.com/daily-thunder-playbook-shaisweeper-2/",
+      "published_at": "2026-03-27T05:00:42.000Z",
+      "tags": [
+        "Playbook"
+      ]
+    }
+  ]
+}

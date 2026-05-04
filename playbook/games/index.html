@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playbook Games</title>
+  <style>body{font-family:system-ui;max-width:980px;margin:2rem auto;padding:0 1rem}li{margin:.5rem 0}</style>
+</head>
+<body>
+  <p><a href="../">← Playbook Home</a></p>
+  <h1>Published Playbook Games</h1>
+  <p id="meta">Loading…</p>
+  <ul id="list"></ul>
+<script>
+(async function(){
+  const res = await fetch('../data/playbook_index.json');
+  const data = await res.json();
+  document.getElementById('meta').textContent = `${data.games_total} indexed published game posts`;
+  const list = document.getElementById('list');
+  data.games.forEach((game) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = game.url;
+    a.textContent = game.game;
+    a.target = '_blank';
+    const when = document.createElement('small');
+    when.textContent = ` — ${new Date(game.published_at).toISOString().slice(0,10)}`;
+    li.appendChild(a);
+    li.appendChild(when);
+    list.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>

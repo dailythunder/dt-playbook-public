@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playbook Crosswords</title>
+  <style>body{font-family:system-ui;max-width:980px;margin:2rem auto;padding:0 1rem}li{margin:.35rem 0}</style>
+</head>
+<body>
+  <p><a href="../">← Playbook Home</a></p>
+  <h1>Archived Crosswords</h1>
+  <p id="meta">Loading…</p>
+  <ol id="list"></ol>
+<script>
+(async function(){
+  const res = await fetch('../data/playbook_index.json');
+  const data = await res.json();
+  document.getElementById('meta').textContent = `${data.crosswords_total} archived crossword puzzles`;
+  const list = document.getElementById('list');
+  data.crosswords.forEach((cw) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '../../' + cw.wrapper_path;
+    a.textContent = cw.title;
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>
