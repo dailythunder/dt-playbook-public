@@ -1,0 +1,54 @@
+{
+  "date_label": "April 19, 2012",
+  "featured_event": "Thunder clinched the No. 2 seed in the West with a home win.",
+  "prompt": "What happened on April 19, 2012?",
+  "choices": [
+    {
+      "id": "a",
+      "label": "Kevin Durant scored 51 against Denver"
+    },
+    {
+      "id": "b",
+      "label": "Oklahoma City clinched the Western Conference No. 2 seed"
+    },
+    {
+      "id": "c",
+      "label": "James Harden was announced as Sixth Man of the Year"
+    }
+  ],
+  "correct_choice_id": "b",
+  "related_links": [
+    {
+      "label": "2011-12 Thunder season overview",
+      "url": "https://www.nba.com/thunder"
+    },
+    {
+      "label": "Thunder historical archive",
+      "url": "https://www.nba.com/thunder/news"
+    }
+  ],
+  "historical_games": [
+    {
+      "date": "2012-04-19",
+      "opponent": "Sacramento Kings",
+      "result": "W",
+      "score": "118-110",
+      "note": "Clinched West No. 2 seed",
+      "url": "https://www.basketball-reference.com/teams/OKC/2012_games.html"
+    },
+    {
+      "date": "2014-04-19",
+      "opponent": "Memphis Grizzlies",
+      "result": "L",
+      "score": "100-86",
+      "note": "Playoff opener in Oklahoma City"
+    },
+    {
+      "date": "2016-04-19",
+      "opponent": "Dallas Mavericks",
+      "result": "W",
+      "score": "84-85",
+      "note": "Road playoff grind win"
+    }
+  ]
+}

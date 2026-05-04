@@ -4,13 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Playbook Crosswords</title>
-  <style>body{font-family:system-ui;max-width:980px;margin:2rem auto;padding:0 1rem}li{margin:.35rem 0}</style>
+  <link rel="stylesheet" href="../assets/playbook.css" />
 </head>
 <body>
-  <p><a href="../">← Playbook Home</a></p>
-  <h1>Archived Crosswords</h1>
-  <p id="meta">Loading…</p>
-  <ol id="list"></ol>
+  <main class="playbook-shell">
+    <header class="playbook-header">
+      <div class="kicker">Thunder Playbook</div>
+      <h1>Archived Crosswords</h1>
+      <p class="subtitle">Crossword wrappers in a clean editorial shell, with puzzle-surface framing.</p>
+      <div class="nav-row">
+        <a class="btn" href="../">← Playbook Home</a>
+        <a class="btn btn-secondary" href="../games/">Published Games</a>
+        <a class="btn btn-primary" href="../prototypes/">Playbook Lab</a>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="meta-row">
+        <span class="chip gold" id="meta">Loading…</span>
+      </div>
+      <div class="play-surface">
+        <ol id="list"></ol>
+      </div>
+    </section>
+  </main>
 <script>
 (async function(){
   const res = await fetch('../data/playbook_index.json');

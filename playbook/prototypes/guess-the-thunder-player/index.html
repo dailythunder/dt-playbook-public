@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playbook Lab - Guess the Thunder Player</title>
+  <link rel="stylesheet" href="../../assets/playbook.css" />
+</head>
+<body>
+  <main class="playbook-shell">
+    <header class="playbook-header">
+      <div class="kicker">Prototype • Guess the Thunder Player</div>
+      <h1 id="title">Guess the Thunder Player</h1>
+      <p class="subtitle">Deduction puzzle with constrained colorful signals in a calm shell.</p>
+      <div class="nav-row">
+        <a class="btn" href="../">← Playbook Lab</a>
+      </div>
+    </header>
+
+    <section class="card playful">
+      <div class="play-surface">
+        <h3>Clues</h3>
+        <ul id="clueList"></ul>
+
+        <div id="choiceWrap" class="nav-row"></div>
+        <div class="nav-row" id="textWrap" hidden>
+          <input id="guessInput" type="text" placeholder="Type your guess" />
+        </div>
+
+        <div class="nav-row">
+          <button class="btn" id="revealBtn">Reveal Another Clue</button>
+          <button class="btn btn-primary" id="submitBtn">Submit Guess</button>
+          <button class="btn" id="resetBtn">Reset</button>
+        </div>
+        <p id="feedback" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    async function init() {
+      const response = await fetch('../../data/guess_player_sample.json');
+      const data = await response.json();
+
+      document.getElementById('title').textContent = data.puzzle_title || 'Guess the Thunder Player';
+      const clues = data.clues || [];
+      const options = data.choices || data.guess_options || [];
+      const acceptable = (data.acceptable_answers || [data.answer || '']).map((s) => s.toLowerCase());
+
+      let revealed = 1;
+      let selectedChoice = '';
+
+      const clueList = document.getElementById('clueList');
+      const feedback = document.getElementById('feedback');
+      const choiceWrap = document.getElementById('choiceWrap');
+      const textWrap = document.getElementById('textWrap');
+      const guessInput = document.getElementById('guessInput');
+
+      function renderClues() {
+        clueList.innerHTML = '';
+        clues.slice(0, revealed).forEach((clue) => {
+          const li = document.createElement('li');
+          li.textContent = `${clue.label}: ${clue.value}`;
+          clueList.appendChild(li);
+        });
+      }
+
+      function renderGuessMode() {
+        choiceWrap.innerHTML = '';
+        if (options.length) {
+          options.forEach((option) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = option;
+            btn.addEventListener('click', () => {
+              selectedChoice = option;
+              [...choiceWrap.children].forEach((node) => node.classList.remove('btn-secondary'));
+              btn.classList.add('btn-secondary');
+            });
+            choiceWrap.appendChild(btn);
+          });
+          textWrap.hidden = true;
+        } else {
+          textWrap.hidden = false;
+        }
+      }
+
+      document.getElementById('revealBtn').addEventListener('click', () => {
+        revealed = Math.min(revealed + 1, clues.length);
+        renderClues();
+      });
+
+      document.getElementById('submitBtn').addEventListener('click', () => {
+        const guess = options.length ? selectedChoice : guessInput.value.trim();
+        const correct = acceptable.includes((guess || '').toLowerCase());
+        feedback.textContent = correct ? (data.result_copy?.correct || 'Correct!') : (data.result_copy?.incorrect || 'Incorrect.');
+        feedback.style.color = correct ? '#166534' : '#b91c1c';
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        revealed = 1;
+        selectedChoice = '';
+        guessInput.value = '';
+        feedback.textContent = '';
+        renderClues();
+        renderGuessMode();
+      });
+
+      renderClues();
+      renderGuessMode();
+    }
+
+    init();
+  </script>
+</body>
+</html>

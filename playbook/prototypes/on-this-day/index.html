@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playbook Lab - On This Day</title>
+  <link rel="stylesheet" href="../../assets/playbook.css" />
+</head>
+<body>
+  <main class="playbook-shell">
+    <header class="playbook-header">
+      <div class="kicker">Prototype • On This Day</div>
+      <h1>On This Day</h1>
+      <p class="subtitle">A daily Thunder timeline challenge prototype.</p>
+      <div class="nav-row">
+        <a class="btn" href="../">← Playbook Lab</a>
+      </div>
+    </header>
+
+    <section class="card playful">
+      <div class="meta-row">
+        <span class="chip blue" id="dateLabel">Loading…</span>
+      </div>
+      <div class="play-surface">
+        <h3 id="prompt">Loading prompt…</h3>
+        <p id="featuredEvent"></p>
+        <div class="grid" id="choices"></div>
+        <p id="feedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Historical Games</h3>
+      <ul class="list-clean" id="games"></ul>
+    </section>
+
+    <section class="card" id="relatedSection" hidden>
+      <h3>Related Links</h3>
+      <ul class="list-clean" id="relatedLinks"></ul>
+    </section>
+  </main>
+
+  <script>
+    async function init() {
+      const dataUrl = '../../data/on_this_day_sample.json';
+      const response = await fetch(dataUrl);
+      const data = await response.json();
+
+      document.getElementById('dateLabel').textContent = data.date_label || 'On This Day';
+      document.getElementById('prompt').textContent = data.prompt || 'Question unavailable';
+      document.getElementById('featuredEvent').textContent = data.featured_event || '';
+
+      const feedback = document.getElementById('feedback');
+      const choices = document.getElementById('choices');
+      (data.choices || []).forEach((choice) => {
+        const button = document.createElement('button');
+        button.className = 'btn';
+        button.textContent = choice.label;
+        button.addEventListener('click', () => {
+          const isCorrect = choice.id === data.correct_choice_id;
+          feedback.textContent = isCorrect ? 'Correct choice.' : 'Not quite. Try again.';
+          feedback.style.color = isCorrect ? '#166534' : '#b91c1c';
+        });
+        choices.appendChild(button);
+      });
+
+      const games = document.getElementById('games');
+      (data.historical_games || []).forEach((game) => {
+        const li = document.createElement('li');
+        li.className = 'list-item';
+        const title = `${game.date} vs ${game.opponent} — ${game.result} ${game.score}`;
+        li.innerHTML = game.url
+          ? `<a href="${game.url}">${title}</a><div class="date">${game.note || ''}</div>`
+          : `<strong>${title}</strong><div class="date">${game.note || ''}</div>`;
+        games.appendChild(li);
+      });
+
+      const related = data.related_links || [];
+      if (related.length) {
+        const section = document.getElementById('relatedSection');
+        const list = document.getElementById('relatedLinks');
+        section.hidden = false;
+        related.forEach((item) => {
+          const li = document.createElement('li');
+          li.className = 'list-item';
+          li.innerHTML = `<a href="${item.url}">${item.label}</a>`;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

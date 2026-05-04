@@ -1,0 +1,44 @@
+{
+  "puzzle_title": "Guess the Thunder Player",
+  "answer": "Andre Roberson",
+  "acceptable_answers": [
+    "Andre Roberson",
+    "Roberson"
+  ],
+  "player_pool": [
+    "Andre Roberson",
+    "Thabo Sefolosha",
+    "Derek Fisher",
+    "Alex Abrines"
+  ],
+  "clues": [
+    {
+      "label": "Role",
+      "value": "Defensive wing and secondary playmaker"
+    },
+    {
+      "label": "Playoff Note",
+      "value": "Started playoff games for Oklahoma City in the mid-2010s"
+    },
+    {
+      "label": "Number",
+      "value": "Thunder jersey number was under 20"
+    }
+  ],
+  "guess_options": [
+    "Andre Roberson",
+    "Dennis Schroder",
+    "Caron Butler",
+    "Anthony Morrow"
+  ],
+  "result_copy": {
+    "correct": "Correct. That clue profile matches Andre Roberson.",
+    "incorrect": "Not quite. Reveal another clue and try again."
+  },
+  "related_links": [
+    {
+      "label": "Thunder player archive",
+      "url": "https://www.nba.com/thunder/roster"
+    }
+  ]
+}

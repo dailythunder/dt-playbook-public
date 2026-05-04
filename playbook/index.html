@@ -3,24 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daily Thunder Playbook (Archive Shell)</title>
-  <style>
-    body{font-family:system-ui,-apple-system,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.5}
-    .card{border:1px solid #ddd;border-radius:8px;padding:1rem;margin:1rem 0}
-    a{color:#0a58ca}
-  </style>
+  <title>Daily Thunder Playbook</title>
+  <link rel="stylesheet" href="assets/playbook.css" />
 </head>
 <body>
-  <h1>Daily Thunder Playbook</h1>
-  <p>Static archive hub for Playbook content in this repository.</p>
-  <div class="card">
-    <h2><a href="crosswords/">Crosswords</a></h2>
-    <p>Browse archived crossword puzzle wrappers captured in this repo.</p>
-  </div>
-  <div class="card">
-    <h2><a href="games/">Games</a></h2>
-    <p>Index of existing published Daily Thunder Playbook game posts.</p>
-  </div>
-  <p><small>Data source: <code>playbook/data/playbook_index.json</code></small></p>
+  <main class="playbook-shell">
+    <header class="playbook-header">
+      <div class="kicker">Thunder Playbook</div>
+      <h1>Daily Thunder Playbook</h1>
+      <p class="subtitle">A shared shell for games, crosswords, and product lab prototypes.</p>
+      <div class="meta-row">
+        <span class="chip hot">DT Native Theme</span>
+        <span class="chip blue">Editorial Shell</span>
+        <span class="chip gold" data-build-stamp>Updated</span>
+      </div>
+      <div class="nav-row">
+        <a class="btn btn-primary" href="games/">Browse Games</a>
+        <a class="btn btn-secondary" href="crosswords/">Crosswords</a>
+        <a class="btn" href="prototypes/">Playbook Lab</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card playful">
+        <h2><a href="crosswords/">Crossword Archive</a></h2>
+        <p>Published puzzle wrappers with clean framing and quick access.</p>
+        <span class="chip blue">Blue-gray board styling</span>
+      </article>
+      <article class="card playful">
+        <h2><a href="games/">Published Games</a></h2>
+        <p>Index of live Playbook game posts, organized for fast scanning.</p>
+        <span class="chip hot">Orange-red primary actions</span>
+      </article>
+      <article class="card playful">
+        <h2><a href="prototypes/">Playbook Lab</a></h2>
+        <p>Prototype zone for experimental puzzle mechanics and interactions.</p>
+        <span class="chip gold">Product experiment mode</span>
+      </article>
+    </section>
+  </main>
+  <script src="assets/playbook.js"></script>
 </body>
 </html>
