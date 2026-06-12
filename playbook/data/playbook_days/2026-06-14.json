@@ -1,0 +1,113 @@
+{
+  "schema_version": "playbook_day_public.v1",
+  "date": "2026-06-14",
+  "title": "Daily Thunder Playbook — June 14, 2026",
+  "status": "ready",
+  "canonical_path": "/playbook/daily/2026-06-14/",
+  "module_order": [
+    "daily_puzzle",
+    "lookback",
+    "article",
+    "play_next"
+  ],
+  "modules": {
+    "daily_puzzle": {
+      "schema_version": "connections_public.v1",
+      "type": "connections",
+      "status": "ready",
+      "title": "Boxed Out",
+      "summary": "",
+      "guide": "Final board edited by author. Removed internal era labels and replaced with public-facing categories.",
+      "groups": [
+        {
+          "name": "Pregame elements",
+          "answers": [
+            "Tip-off",
+            "Injury Report",
+            "Channel",
+            "Arena"
+          ]
+        },
+        {
+          "name": "Tough defense",
+          "answers": [
+            "Hawk",
+            "Hound",
+            "Bully",
+            "Blanket"
+          ]
+        },
+        {
+          "name": "Birds as verbs",
+          "answers": [
+            "Duck",
+            "Crane",
+            "Crow",
+            "Parrot"
+          ]
+        },
+        {
+          "name": "At the Barbershop",
+          "answers": [
+            "Fade",
+            "Cut",
+            "Line Up",
+            "Guard"
+          ]
+        }
+      ]
+    },
+    "lookback": {
+      "schema_version": "lookback_public.v1",
+      "status": "ready",
+      "mode": "summer_finals_week",
+      "anchor": "exact date match",
+      "event_id": "espn_OKC_2012_p017",
+      "game": {
+        "game_date": "2012-06-14",
+        "matchup": "Miami Heat at Oklahoma City Thunder",
+        "home_team": "Oklahoma City Thunder",
+        "away_team": "Miami Heat",
+        "scoreboard": "MIA 100, Thunder 96",
+        "winner": "Miami Heat",
+        "margin": 4,
+        "game_high_points": [
+          "Kevin Durant",
+          "LeBron James"
+        ],
+        "okc_rebounds_leader": [
+          "Kendrick Perkins",
+          "Russell Westbrook"
+        ],
+        "okc_assists_leader": [
+          "Russell Westbrook"
+        ]
+      },
+      "board": {
+        "revealed": [
+          "date",
+          "home_team",
+          "away_team"
+        ],
+        "guess_fields": [
+          "winner",
+          "margin",
+          "game_high_points",
+          "okc_rebounds_leader",
+          "okc_assists_leader"
+        ]
+      }
+    },
+    "article": {
+      "schema_version": "article_link_public.v1",
+      "status": "ready",
+      "selection_mode": "editor_selected",
+      "article_title": "Horrific start costs the Thunder Game 2, 100-96",
+      "article_url": "https://www.dailythunder.com/horrific-start-costs-the-thunder-game-2-100-96/",
+      "post_type": "recap",
+      "access": "public_or_preview",
+      "preamble": ""
+    }
+  },
+  "omitted_modules": []
+}

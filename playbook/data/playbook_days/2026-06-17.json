@@ -1,0 +1,75 @@
+{
+  "schema_version": "playbook_day_public.v1",
+  "date": "2026-06-17",
+  "title": "Daily Thunder Playbook — June 17, 2026",
+  "status": "ready",
+  "canonical_path": "/playbook/daily/2026-06-17/",
+  "module_order": [
+    "daily_puzzle",
+    "lookback",
+    "article",
+    "play_next"
+  ],
+  "modules": {
+    "daily_puzzle": {
+      "schema_version": "crossword_public.v1",
+      "type": "crossword",
+      "status": "ready",
+      "title": "Tiny Huge Games",
+      "replacement_slug": "The_Chain",
+      "summary": "Existing archive crossword finalized from The_Chain source with Tiny Huge Games title/clue edits.",
+      "guide": "Use crossword_editor_tiny_huge_games.md for final clue/answer key and carry-forward notes."
+    },
+    "lookback": {
+      "schema_version": "lookback_public.v1",
+      "status": "ready",
+      "mode": "summer_finals_week",
+      "anchor": "exact date match",
+      "event_id": "espn_OKC_2025_p020",
+      "game": {
+        "game_date": "2025-06-13",
+        "matchup": "Oklahoma City Thunder at Indiana Pacers",
+        "home_team": "Indiana Pacers",
+        "away_team": "Oklahoma City Thunder",
+        "scoreboard": "Thunder 111, IND 104",
+        "winner": "Thunder",
+        "margin": 7,
+        "game_high_points": [
+          "Shai Gilgeous-Alexander"
+        ],
+        "okc_rebounds_leader": [
+          "Chet Holmgren"
+        ],
+        "okc_assists_leader": [
+          "Isaiah Hartenstein",
+          "Jalen Williams"
+        ]
+      },
+      "board": {
+        "revealed": [
+          "date",
+          "home_team",
+          "away_team"
+        ],
+        "guess_fields": [
+          "winner",
+          "margin",
+          "game_high_points",
+          "okc_rebounds_leader",
+          "okc_assists_leader"
+        ]
+      }
+    },
+    "article": {
+      "schema_version": "article_link_public.v1",
+      "status": "ready",
+      "selection_mode": "editor_selected",
+      "article_title": "Thunder steal win in Indy, even Finals 2-2",
+      "article_url": "https://www.dailythunder.com/thunder-steal-win-in-indy-even-finals-2-2/",
+      "post_type": "recap",
+      "access": "public_or_preview",
+      "preamble": ""
+    }
+  },
+  "omitted_modules": []
+}

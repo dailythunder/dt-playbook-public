@@ -1,0 +1,53 @@
+{
+  "schema_version": "playbook_manifest.v1",
+  "generated_at": "2026-06-11T05:24:30.270542Z",
+  "source": "archive/event_registry/reviewed/playbook_days",
+  "days": [
+    {
+      "date": "2026-06-14",
+      "title": "Daily Thunder Playbook — June 14, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-14.json",
+      "canonical_path": "/playbook/daily/2026-06-14/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Daily Thunder Playbook — June 15, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-15.json",
+      "canonical_path": "/playbook/daily/2026-06-15/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Daily Thunder Playbook — June 17, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-17.json",
+      "canonical_path": "/playbook/daily/2026-06-17/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    }
+  ],
+  "skipped": [
+    {
+      "date": "2026-06-16",
+      "status": "ready_for_editor",
+      "reason": "day_not_ready_for_export"
+    }
+  ]
+}
