@@ -147,21 +147,51 @@ function renderConnections(parent, pz) {
   renderBoard();
 }
 
+function shaiPuzzleDims(pz) {
+  const fromBoardRows = Array.isArray(pz.board) ? pz.board.length : 0;
+  const fromBoardCols = Array.isArray(pz.board) && pz.board[0] ? String(pz.board[0]).length : 0;
+  const rows = Number(pz.rows || fromBoardRows || 9);
+  const cols = Number(pz.cols || fromBoardCols || 9);
+  return {
+    rows: Number.isFinite(rows) && rows > 0 ? rows : 9,
+    cols: Number.isFinite(cols) && cols > 0 ? cols : 9
+  };
+}
+function shaiCellIdToRowCol(id) {
+  const m = String(id || '').trim().toUpperCase().match(/^([A-Z]+)([1-9][0-9]*)$/);
+  if (!m) return null;
+  let col = 0;
+  for (const ch of m[1]) col = col * 26 + (ch.charCodeAt(0) - 64);
+  const row = Number(m[2]);
+  return [row - 1, col - 1];
+}
 function boardFromPuzzle(pz) {
-  if (Array.isArray(pz.board) && pz.board.length === 9 && pz.board.every(row => typeof row === 'string' && row.length === 9)) {
+  const dims = shaiPuzzleDims(pz || {});
+  if (Array.isArray(pz.board) && pz.board.length === dims.rows && pz.board.every(row => typeof row === 'string' && row.length === dims.cols)) {
     return pz.board;
   }
+  const grid = Array.from({ length: dims.rows }, () => Array(dims.cols).fill('.'));
+  let placed = 0;
+  const place = (r, c) => {
+    if (Number.isInteger(r) && Number.isInteger(c) && r >= 0 && r < dims.rows && c >= 0 && c < dims.cols) {
+      if (grid[r][c] !== '*') placed += 1;
+      grid[r][c] = '*';
+    }
+  };
+  if (Array.isArray(pz.cell_ids)) {
+    pz.cell_ids.forEach(id => {
+      const rc = shaiCellIdToRowCol(id);
+      if (rc) place(rc[0], rc[1]);
+    });
+  }
   if (Array.isArray(pz.mine_cells)) {
-    const grid = Array.from({ length: 9 }, () => Array(9).fill('.'));
     pz.mine_cells.forEach(cell => {
       let r;
       let c;
       if (Array.isArray(cell)) [r, c] = cell;
       else if (typeof cell === 'string') [r, c] = cell.split(/[,:]/).map(Number);
-      if (Number.isInteger(r) && Number.isInteger(c) && r >= 0 && r < 9 && c >= 0 && c < 9) grid[r][c] = '*';
+      place(r, c);
     });
-    return grid.map(row => row.join(''));
   }
-  return null;
+  return placed ? grid.map(row => row.join('')) : null;
 }
-
