@@ -1,13 +1,13 @@
 function renderShaiSweeper(parent, pz, day) {
   const boardRows = boardFromPuzzle(pz);
-  if (pz.status === 'source_pending' || pz.status === 'fake' || pz.source_status === 'source_pending' || pz.source_status === 'fake') {
+  if (pz.status === 'source_pending') {
     const pending = child(parent, 'div', 'dp-gameday-empty');
     child(pending, 'strong', '', 'ShaiSweeper source pending. ');
-    child(pending, 'span', '', 'This puzzle refuses source_pending/fake boards and needs reviewed 9x9 shot-map data before publication.');
+    child(pending, 'span', '', 'This puzzle needs reviewed shot-map cells before publication.');
     return;
   }
-  if (!boardRows || pz.reviewed === false) {
-    child(parent, 'div', 'dp-gameday-empty', 'ShaiSweeper board pending. Add a reviewed 9x9 board or mine_cells list to the public day JSON.');
+  if (!boardRows) {
+    child(parent, 'div', 'dp-gameday-empty', 'ShaiSweeper board pending. Add reviewed cell_ids, board, or mine_cells to the public day JSON.');
     return;
   }
   const bombs = boardRows.join('').split('').filter(ch => ch === '*').length;
@@ -15,7 +15,10 @@ function renderShaiSweeper(parent, pz, day) {
     label: pz.title || 'ShaiSweeper',
     bombs: Number(pz.bombs || bombs || 0),
     chartUrl: pz.source_url || pz.answer_reveal?.source_chart_url || '',
-    board: boardRows
+    board: boardRows,
+    rows: boardRows.length,
+    cols: boardRows[0] ? boardRows[0].length : 0,
+    gridId: pz.grid_id || pz.standard_grid_id || 'shaisweeper_standard_grid'
   };
   if (pz.foreground_clue) child(parent, 'p', 'dp-gameday-empty', pz.foreground_clue);
   if (Array.isArray(pz.public_clues) && pz.public_clues.length) {
@@ -40,6 +43,9 @@ function renderShaiSweeper(parent, pz, day) {
   const timeDisplay = child(top, 'div', 'shai-display', '000');
   const shell = child(wrap, 'div', 'shai-board-shell');
   const grid = child(shell, 'div', 'shai-grid');
+  grid.style.setProperty('--shai-cols', String(preset.cols || 9));
+  grid.style.setProperty('--shai-rows', String(preset.rows || 9));
+  grid.setAttribute('aria-label', `${preset.rows} by ${preset.cols} ShaiSweeper grid`);
   const stat = child(wrap, 'div', 'shai-status');
   const status = child(stat, 'div', 'shai-legend', 'Ready. Left click reveal. Right click flag.');
   child(stat, 'div', 'shai-legend', `${preset.bombs} bombs`);
@@ -181,10 +187,12 @@ function renderShaiSweeper(parent, pz, day) {
 }
 
 function buildShaiSession(rows, bombs) {
+  const rowCount = Array.isArray(rows) ? rows.length : 0;
+  const colCount = rowCount && rows[0] ? rows[0].length : 0;
   const board = rows.flatMap((row, r) => row.split('').map((ch, c) => ({
     r, c, mine: ch === '*', revealed: false, flagged: false, adjacent: 0, el: null
   })));
-  function at(r, c) { return board[r * 9 + c]; }
+  function at(r, c) { return board[r * colCount + c]; }
   function neighbors(t) {
     const out = [];
     for (let dr = -1; dr <= 1; dr++) {
@@ -192,13 +200,13 @@ function buildShaiSession(rows, bombs) {
         if (!dr && !dc) continue;
         const r = t.r + dr;
         const c = t.c + dc;
-        if (r >= 0 && r < 9 && c >= 0 && c < 9) out.push(at(r, c));
+        if (r >= 0 && r < rowCount && c >= 0 && c < colCount) out.push(at(r, c));
       }
     }
     return out;
   }
   board.forEach(t => { t.adjacent = neighbors(t).filter(n => n.mine).length; });
-  return { board, bombs, started: false, gameOver: false, won: false, timer: 0, neighbors };
+  return { board, bombs, rows: rowCount, cols: colCount, started: false, gameOver: false, won: false, timer: 0, neighbors };
 }
 function flood(session, first) {
   const stack = [first];
@@ -220,5 +228,10 @@ function flood(session, first) {
       if (!n.revealed && !n.flagged && !n.mine) stack.push(n);
     });
   }
+}
+
+function renderScoreboardPuzzle(parent, pz, day) {
+  child(parent, 'p', 'dtp-small', pz.summary || 'Scoreboard memory board.');
+  renderLookback(parent, day.modules.lookback, day, true);
 }
 
