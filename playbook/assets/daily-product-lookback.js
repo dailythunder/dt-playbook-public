@@ -1,115 +1,74 @@
-function renderScoreboardPuzzle(parent, pz, day) {
-  child(parent, 'p', 'dtp-small', pz.summary || 'Scoreboard memory board.');
-  renderLookback(parent, day.modules.lookback, day, true);
-}
-
-function renderLookback(parent, lookback, day, compact = false) {
-  if (!lookback || !lookback.game) return;
-  const game = lookback.game;
-  const lb = getLookbackState(day.date);
-  const look = child(parent, 'section', compact ? 'scoreboard-trivia compact' : 'card scoreboard-trivia');
-  child(look, 'div', 'dp-eyebrow', 'Scoreboard Trivia');
-  child(look, 'h2', 'dp-panel-title', game.matchup || 'Thunder lookback');
-  child(look, 'p', 'date', `${game.game_date || ''} · ${game.scoreboard || ''}`.trim());
-
-  const facts = child(look, 'div', 'dp-facts');
-  (lookback.board?.revealed || []).forEach(field => {
-    const label = field.replace(/_/g, ' ');
-    const value = field === 'date' ? game.game_date : game[field];
-    child(facts, 'div', 'dp-fact', `${label}: ${listText(value)}`);
-  });
-
-  const fields = lookback.board?.guess_fields || ['winner', 'margin', 'game_high_points', 'okc_rebounds_leader', 'okc_assists_leader'];
-  const labels = {
-    winner: 'Winner',
-    margin: 'Margin',
-    game_high_points: 'Game high points',
-    okc_rebounds_leader: 'OKC rebounds leader',
-    okc_assists_leader: 'OKC assists leader'
-  };
-  const form = child(look, 'div', 'scoreboard-form');
-  fields.forEach(field => {
-    const row = child(form, 'div', 'scoreboard-row');
-    child(row, 'label', '', labels[field] || field.replace(/_/g, ' '));
-    const input = child(row, 'input', 'scoreboard-input');
-    input.value = lb.answers[field] || '';
-    input.placeholder = lb.revealed ? listText(game[field]) : 'Your guess';
-    input.disabled = lb.revealed || lb.results[field] === true;
-    input.addEventListener('input', () => { lb.answers[field] = input.value; });
-    const result = child(row, 'span', 'scoreboard-result');
-    if (lb.results[field] === true) {
-      result.classList.add('correct');
-      result.textContent = '✓';
-    } else if (lb.results[field] === false) {
-      result.classList.add('incorrect');
-      result.textContent = lb.revealed ? listText(game[field]) : 'Try again';
-    } else if (lb.revealed) {
-      result.textContent = listText(game[field]);
+(() => {
+  const DP = window.DTPlaybook;
+  DP.renderLookback = function(parent, lookback) {
+    if (!lookback || !lookback.game) return;
+    const game = lookback.game;
+    const look = DP.child(parent, 'section', 'card lookback-card');
+    DP.child(look, 'div', 'dp-eyebrow', 'Lookback Board');
+    DP.child(look, 'h2', 'dp-panel-title', game.matchup || 'Thunder lookback');
+    DP.child(look, 'p', 'date', `${game.game_date || ''} · ${game.scoreboard || ''}`.trim());
+    const facts = DP.child(look, 'div', 'dp-facts');
+    (lookback.board?.revealed || ['date','home_team','away_team']).forEach(field => {
+      const label = field.replace(/_/g, ' ');
+      const value = field === 'date' ? game.game_date : game[field];
+      DP.child(facts, 'div', 'dp-fact', `${label}: ${DP.listText(value)}`);
+    });
+    const fields = [
+      ['winner', 'Winner', game.winner],
+      ['margin', 'Margin', game.margin],
+      ['game_high_points', 'Game high points', game.game_high_points],
+      ['okc_rebounds_leader', 'OKC rebounds leader', game.okc_rebounds_leader],
+      ['okc_assists_leader', 'OKC assists leader', game.okc_assists_leader]
+    ];
+    const form = DP.child(look, 'div', 'scoreboard-trivia');
+    const results = {};
+    fields.forEach(([key, label, value]) => {
+      const row = DP.child(form, 'div', 'trivia-row');
+      DP.child(row, 'label', '', label);
+      const input = DP.child(row, 'input', 'trivia-input');
+      input.placeholder = 'Your guess';
+      const result = DP.child(row, 'span', 'trivia-result', '');
+      results[key] = { input, result, value };
+    });
+    const controls = DP.child(form, 'div', 'dtp-controls');
+    const check = DP.child(controls, 'button', 'dtp-btn', 'Check guesses');
+    const reveal = DP.child(controls, 'button', 'dtp-btn secondary', 'Reveal board');
+    check.type = reveal.type = 'button';
+    function revealAll() {
+      Object.values(results).forEach(r => { r.result.textContent = DP.listText(r.value); r.result.className = 'trivia-result revealed'; });
+      DP.state.revealed = true;
+      DP.render();
     }
-  });
-
-  const controls = child(look, 'div', 'dtp-controls');
-  const check = child(controls, 'button', 'dtp-btn', 'Check board');
-  const reveal = child(controls, 'button', 'dtp-btn', lb.revealed ? 'Hide answers' : 'Reveal board');
-  check.type = reveal.type = 'button';
-  check.disabled = lb.revealed;
-  const status = child(look, 'div', 'dtp-status', allLookbackCorrect(day) ? 'Board cleared. Archive hook unlocked.' : 'Guess any field to unlock the archive hook, or clear the full board.');
-
-  check.addEventListener('click', () => {
-    fields.forEach(field => {
-      lb.results[field] = scoreLookbackAnswer(field, lb.answers[field], game[field]);
+    check.addEventListener('click', () => {
+      Object.entries(results).forEach(([, r]) => {
+        const expected = Array.isArray(r.value) ? r.value.map(DP.norm) : [DP.norm(r.value)];
+        const guess = DP.norm(r.input.value);
+        const correct = guess && expected.some(x => x.includes(guess) || guess.includes(x));
+        r.result.textContent = correct ? 'Correct' : `Answer: ${DP.listText(r.value)}`;
+        r.result.className = `trivia-result ${correct ? 'correct' : 'incorrect'}`;
+      });
     });
-    lb.checked = true;
-    render();
-  });
-  reveal.addEventListener('click', () => {
-    lb.revealed = !lb.revealed;
-    render();
-  });
-}
-
-function scoreLookbackAnswer(field, guess, expected) {
-  if (guess === undefined || guess === null || String(guess).trim() === '') return false;
-  if (field === 'margin') {
-    return Number.parseInt(guess, 10) === Number.parseInt(expected, 10);
-  }
-  const g = normalizeCompact(guess);
-  const values = Array.isArray(expected) ? expected : [expected];
-  return values.some(value => {
-    const v = normalizeCompact(value);
-    if (!v) return false;
-    return g === v || v.includes(g) || g.includes(v);
-  });
-}
-
-function renderArticle(parent, article, day) {
-  if (!article) return;
-  const unlocked = canUnlockArticle(day);
-  const yb = child(parent, 'section', 'card dp-yearbook');
-  child(yb, 'div', 'dp-eyebrow', 'From the archive');
-  child(yb, 'h2', '', article.article_title || 'Daily Thunder article');
-  child(yb, 'p', '', unlocked ? (article.preamble || 'Selected article unlocks after the scoreboard board.') : 'Hidden until you make progress on the scoreboard board. Guess a field or reveal the board first.');
-  if (unlocked && article.article_url) {
-    const a = child(yb, 'a', 'btn', 'Open selected article');
-    a.href = article.article_url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-  }
-}
-
-function renderPlayNext(parent) {
-  const wrap = child(parent, 'section', 'card');
-  child(wrap, 'div', 'dp-eyebrow', 'Play next');
-  const next = state.days[state.active + 1];
-  if (next) {
-    const b = child(wrap, 'button', 'btn btn-primary', `Next: ${dateLabel(next.date)}`);
-    b.type = 'button';
-    b.addEventListener('click', () => {
-      state.active += 1;
-      render();
-    });
-  } else {
-    child(wrap, 'p', '', 'End of the imported Playbook slate.');
-  }
-}
-
+    reveal.addEventListener('click', revealAll);
+  };
+  DP.renderArticle = function(parent, article) {
+    if (!article) return;
+    const yb = DP.child(parent, 'section', 'card dp-yearbook');
+    DP.child(yb, 'div', 'dp-eyebrow', 'From the archive');
+    DP.child(yb, 'h2', '', article.article_title || 'Daily Thunder article');
+    DP.child(yb, 'p', '', DP.state.revealed ? (article.preamble || 'Selected article unlocks after the lookback reveal.') : 'Hidden until board reveal. Complete or reveal the scoreboard board first.');
+    if (DP.state.revealed && article.article_url) {
+      const a = DP.child(yb, 'a', 'btn', 'Open selected article');
+      a.href = article.article_url; a.target = '_blank'; a.rel = 'noopener';
+    }
+  };
+  DP.renderPlayNext = function(parent) {
+    const wrap = DP.child(parent, 'section', 'card');
+    DP.child(wrap, 'div', 'dp-eyebrow', 'Play next');
+    const next = DP.state.days[DP.state.active + 1];
+    if (next) {
+      const b = DP.child(wrap, 'button', 'btn btn-primary', `Next: ${DP.dateLabel(next.date)}`);
+      b.type = 'button';
+      b.addEventListener('click', () => { DP.state.active += 1; DP.state.revealed = false; DP.render(); });
+    } else DP.child(wrap, 'p', '', 'End of the imported Playbook slate.');
+  };
+})();

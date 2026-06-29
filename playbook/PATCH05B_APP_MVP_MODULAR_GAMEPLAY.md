@@ -1,23 +1,32 @@
-# Patch 05B: Playbook MVP Modular Gameplay
+# Patch 05B — app MVP modular gameplay polish
 
-This patch splits the Daily Product runtime into modular browser-loaded chunks for the Playbook MVP gameplay surface.
+Scope: `dt-playbook-public` only.
 
-## Runtime chunks
+This patch replaces the single large Daily Product runtime with a small loader and split runtime chunks.
 
-- `daily-product.js` now acts as the lightweight loader.
-- `daily-product-core.js` holds shared state and render helpers.
-- `daily-product-hoardle-crossword.js` keeps crossword and Hoardle gameplay.
-- `daily-product-connections.js` keeps the Connections-style puzzle.
-- `daily-product-shaisweeper.js` keeps reviewed-board ShaiSweeper gameplay.
-- `daily-product-lookback.js` keeps scoreboard trivia and Yearbook unlock behavior.
-- `daily-product-load.js` keeps manifest/day fetch orchestration.
+## What changed
 
-## Styling chunks
+- `daily-product.js` now loads the split JS/CSS chunks.
+- Hoardle has a six-guess five-letter game loop.
+- Connections remains playable.
+- Lookback/scoreboard has field-by-field guess, check, and reveal behavior.
+- ShaiSweeper is gated: it renders only when public data has reviewed board coordinates (`board.rows`, `board.cols`, and `board.mine_cells`, or equivalent top-level values).
+- Source-pending or missing-board ShaiSweeper files refuse to fake a board.
+- Crossword remains an archive-source link until the full crossword runtime is re-integrated.
 
-- `daily-product.css` imports split CSS chunks.
-- `daily-product-core.css` contains shell and shared game styling.
-- `daily-product-games.css` contains heavier gameplay styling.
+## Files
 
-## Safety
+```text
+playbook/assets/daily-product.js
+playbook/assets/daily-product-core.js
+playbook/assets/daily-product-hoardle-crossword.js
+playbook/assets/daily-product-connections.js
+playbook/assets/daily-product-shaisweeper.js
+playbook/assets/daily-product-lookback.js
+playbook/assets/daily-product-load.js
+playbook/assets/daily-product.css
+playbook/assets/daily-product-core.css
+playbook/assets/daily-product-games.css
+```
 
-The runtime continues to fetch `../data/playbook_manifest.json`, refuses pending ShaiSweeper source boards, and keeps gameplay client-side only. No Ghost action is included.
+No Ghost API calls, publishing, or workflow runs are involved.
