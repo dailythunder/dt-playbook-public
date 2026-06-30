@@ -1,0 +1,25 @@
+{
+  "schema_version": "summer_league_funhouse.v0",
+  "mode": "Summer Funhouse / not regular-season canonical",
+  "title": "Thunder Summer League Scoreboard Lab",
+  "positioning": "Use this as a preview shell for July beta users: real links and real roster-contract watch, wrapped in deliberately unserious scoreboard language.",
+  "playbook_teaser_url": "../",
+  "featured_game": {
+    "label": "OKC vs. Summer Opponent TBD",
+    "home": "Thunder-ish People",
+    "away": "Other Guys In Numbered Laundry",
+    "fake_score": { "home": "Vibes +12", "away": "Learning Experience" },
+    "vibes_symbol": "🧪",
+    "exaggeration_line": "Final: Thunder win the body-language championship by 47 invisible points.",
+    "real_tracking_note": "Real tracking slots: roster invite, two-way status, Exhibit 10 watch, draft-rights player, and one actual box-score link. Keep the jokes above the waterline and the transactions factual."
+  },
+  "nerd_ledger": [
+    { "label": "Two-way watch", "note": "Track who is actually eligible, signed, waived, or still floating in summer-contract fog." },
+    { "label": "Shot diet", "note": "Use real box score links when available, but describe the chart like it was found in a beach cooler." },
+    { "label": "Playmaking panic meter", "note": "Replace win probability with 'can this guy run a Tuesday offense without a parent present?'" },
+    { "label": "Big-man summer truth serum", "note": "Screens, boards, fouls, and whether the hands are real." }
+  ],
+  "gag_modules": [
+    "Vibes spread", "Fake line movement", "Dad-cam defensive grade", "Contract goblin watch", "Box-score archaeology", "One real Playbook tease"
+  ]
+}
