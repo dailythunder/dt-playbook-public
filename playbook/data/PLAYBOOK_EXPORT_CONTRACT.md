@@ -1,26 +1,32 @@
-# Playbook public data contract
+# Playbook export contract
 
-These files are imported public-safe exports from `dailythunder/dt-archive-private`.
-
-Authoritative private source path:
+Private source:
 
 ```text
-archive/event_registry/reviewed/playbook_days/
+archive/event_registry/reviewed/playbook_days/YYYY-MM-DD/*.reviewed.json
 ```
 
-Private export path:
+Private public-safe export:
 
 ```text
-archive/event_registry/dist-public/
+archive/event_registry/dist-public/playbook_manifest.json
+archive/event_registry/dist-public/playbook_days/YYYY-MM-DD.json
 ```
 
-Public import path in this repo:
+Public renderer import:
 
 ```text
 playbook/data/playbook_manifest.json
 playbook/data/playbook_days/YYYY-MM-DD.json
 ```
 
-Do not hand-author or manually patch these JSON files as source content. If a day, puzzle, lookback, or article needs editing, change the reviewed source in `dt-archive-private`, validate/export there, then re-import the public-safe JSON here.
+ShaiSweeper launch standard:
 
-Patch 02A imports the June 14, June 15, and June 17 public-safe Playbook days. June 16 remains skipped because its ShaiSweeper puzzle is `source_pending` in the private source contract.
+```text
+shaisweeper_standard_9x12_v4
+standard mode = made field goals only
+free throws excluded from launch mode
+one made three = one mine, not three mines
+```
+
+The public repo must never become the authoring source. Import validated public-safe exports only.
