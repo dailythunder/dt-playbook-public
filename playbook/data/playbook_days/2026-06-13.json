@@ -1,1 +1,111 @@
-{"schema_version":"playbook_day_public.v1","date":"2026-06-13","title":"Daily Thunder Playbook — 2026-06-13","status":"ready","canonical_path":"/playbook/daily/2026-06-13/","modules":{"daily_puzzle":{"type":"connections","status":"ready","title":"What Type?","groups":[{"name":"Shai's championship teammates","answers":["Dieng","Caruso","Wiggins","Mitchell"]},{"name":"Off-ball activities","answers":["Crash","Screen","Roll","Pop"]},{"name":"On the Keyboard","answers":["Shift","Delete","Slash","Space"]},{"name":"At the Barbershop","answers":["Fade","Cut","Line Up","Guard"]}]},"lookback":{"game":{"game_date":"2025-06-13","matchup":"Oklahoma City Thunder at Indiana Pacers","scoreboard":"Thunder 111, IND 104","winner":"Thunder","margin":7,"game_high_points":["Shai Gilgeous-Alexander"],"okc_rebounds_leader":["Chet Holmgren"],"okc_assists_leader":["Isaiah Hartenstein","Jalen Williams"]},"board":{"revealed":["date","home_team","away_team"]}},"article":{"article_title":"Daily Thunder Playbook","article_url":"https://www.dailythunder.com/tag/playbook/"}}}
+{
+  "schema_version": "playbook_day_public.v1",
+  "date": "2026-06-13",
+  "title": "Daily Thunder Playbook — June 13, 2026",
+  "status": "ready",
+  "canonical_path": "/playbook/daily/2026-06-13/",
+  "module_order": [
+    "daily_puzzle",
+    "lookback",
+    "article",
+    "play_next"
+  ],
+  "modules": {
+    "daily_puzzle": {
+      "schema_version": "connections_public.v1",
+      "type": "connections",
+      "status": "ready",
+      "title": "What Type?",
+      "summary": "",
+      "guide": "Final board edited by author. Use last-name public answers where appropriate; save full-name/index expansions separately.",
+      "groups": [
+        {
+          "name": "Shai's championship teammates",
+          "answers": [
+            "Dieng",
+            "Caruso",
+            "Wiggins",
+            "Mitchell"
+          ]
+        },
+        {
+          "name": "OKC players whose last syllables sound like a body part",
+          "answers": [
+            "Holmgren",
+            "Anthony",
+            "Grantham",
+            "Mullens"
+          ]
+        },
+        {
+          "name": "Off-ball activities",
+          "answers": [
+            "Crash",
+            "Screen",
+            "Roll",
+            "Pop"
+          ]
+        },
+        {
+          "name": "On the Keyboard",
+          "answers": [
+            "Shift",
+            "Delete",
+            "Slash",
+            "Space"
+          ]
+        }
+      ]
+    },
+    "lookback": {
+      "schema_version": "lookback_public.v1",
+      "status": "ready",
+      "mode": "summer_finals_week",
+      "anchor": "exact date match",
+      "event_id": "espn_OKC_2025_p018",
+      "game": {
+        "game_date": "2025-06-08",
+        "matchup": "Indiana Pacers at Oklahoma City Thunder",
+        "home_team": "Oklahoma City Thunder",
+        "away_team": "Indiana Pacers",
+        "scoreboard": "Thunder 123, IND 107",
+        "winner": "Thunder",
+        "margin": 16,
+        "game_high_points": [
+          "Shai Gilgeous-Alexander"
+        ],
+        "okc_rebounds_leader": [
+          "Isaiah Hartenstein"
+        ],
+        "okc_assists_leader": [
+          "Shai Gilgeous-Alexander"
+        ]
+      },
+      "board": {
+        "revealed": [
+          "date",
+          "home_team",
+          "away_team"
+        ],
+        "guess_fields": [
+          "winner",
+          "margin",
+          "game_high_points",
+          "okc_rebounds_leader",
+          "okc_assists_leader"
+        ]
+      }
+    },
+    "article": {
+      "schema_version": "article_link_public.v1",
+      "status": "ready",
+      "selection_mode": "editor_selected",
+      "article_title": "Thunder steady series 1-1 in win over Pacers",
+      "article_url": "https://www.dailythunder.com/thunder-steady-series-1-1-in-win-over-pacers/",
+      "post_type": "recap",
+      "access": "public_or_preview",
+      "preamble": ""
+    }
+  },
+  "omitted_modules": []
+}

@@ -1,1 +1,112 @@
-{"schema_version":"playbook_day_public.v1","date":"2026-06-10","title":"Daily Thunder Playbook — 2026-06-10","status":"ready","canonical_path":"/playbook/daily/2026-06-10/","modules":{"daily_puzzle":{"type":"hoardle","status":"ready","title":"Hoardle","answer":"DRAFT","accepted_answers":["DRAFT"]},"lookback":{"game":{"game_date":"2016-06-10","matchup":"Oklahoma City Thunder at Golden State Warriors","scoreboard":"GSW 108, Thunder 101","winner":"Golden State Warriors","margin":7,"game_high_points":["Stephen Curry"],"okc_rebounds_leader":["Steven Adams"],"okc_assists_leader":["Russell Westbrook"]},"board":{"revealed":["date","home_team","away_team"]}},"article":{"article_title":"Daily Thunder Playbook","article_url":"https://www.dailythunder.com/tag/playbook/"}}}
+{
+  "schema_version": "playbook_day_public.v1",
+  "date": "2026-06-10",
+  "title": "Daily Thunder Playbook — June 10, 2026",
+  "status": "ready",
+  "canonical_path": "/playbook/daily/2026-06-10/",
+  "module_order": [
+    "daily_puzzle",
+    "lookback",
+    "article",
+    "play_next"
+  ],
+  "modules": {
+    "daily_puzzle": {
+      "schema_version": "connections_public.v1",
+      "type": "connections",
+      "status": "ready",
+      "title": "’Mo Words",
+      "summary": "",
+      "guide": "Final board edited by author. Use last-name public answers where appropriate; preserve full names for author/index reference.",
+      "groups": [
+        {
+          "name": "OKC coaches who played in the NBA",
+          "answers": [
+            "Brooks",
+            "Donovan",
+            "Cheeks",
+            "Williams"
+          ]
+        },
+        {
+          "name": "First names of 2026 conference finals coaches",
+          "answers": [
+            "Mark",
+            "Mike",
+            "Mitch",
+            "Kenny"
+          ]
+        },
+        {
+          "name": "Official NBA stats",
+          "answers": [
+            "Hustle",
+            "Tracking",
+            "Clutch",
+            "Advanced"
+          ]
+        },
+        {
+          "name": "Bad, in modern slang",
+          "answers": [
+            "Mid",
+            "Buns",
+            "Dog Water",
+            "Ohio"
+          ]
+        }
+      ]
+    },
+    "lookback": {
+      "schema_version": "lookback_public.v1",
+      "status": "ready",
+      "mode": "summer_finals_week",
+      "anchor": "summer fallback: Finals-week Thunder classic",
+      "event_id": "espn_OKC_2012_p015",
+      "game": {
+        "game_date": "2012-06-06",
+        "matchup": "San Antonio Spurs at Oklahoma City Thunder",
+        "home_team": "Oklahoma City Thunder",
+        "away_team": "San Antonio Spurs",
+        "scoreboard": "Thunder 107, SA 99",
+        "winner": "Thunder",
+        "margin": 8,
+        "game_high_points": [
+          "Kevin Durant"
+        ],
+        "okc_rebounds_leader": [
+          "Kevin Durant"
+        ],
+        "okc_assists_leader": [
+          "Kevin Durant",
+          "Russell Westbrook"
+        ]
+      },
+      "board": {
+        "revealed": [
+          "date",
+          "home_team",
+          "away_team"
+        ],
+        "guess_fields": [
+          "winner",
+          "margin",
+          "game_high_points",
+          "okc_rebounds_leader",
+          "okc_assists_leader"
+        ]
+      }
+    },
+    "article": {
+      "schema_version": "article_link_public.v1",
+      "status": "ready",
+      "selection_mode": "editor_selected",
+      "article_title": "A moment in the making: OKC wins in six over the Spurs, 107-99",
+      "article_url": "https://www.dailythunder.com/a-moment-in-the-making-thunder-win-in-six-over-the-spurs-107-99/",
+      "post_type": "recap",
+      "access": "public_or_preview",
+      "preamble": ""
+    }
+  },
+  "omitted_modules": []
+}

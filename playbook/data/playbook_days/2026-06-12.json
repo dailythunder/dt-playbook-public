@@ -1,1 +1,78 @@
-{"schema_version":"playbook_day_public.v1","date":"2026-06-12","title":"Daily Thunder Playbook — 2026-06-12","status":"ready","canonical_path":"/playbook/daily/2026-06-12/","modules":{"daily_puzzle":{"type":"hoardle","status":"ready","title":"Hoardle","answer":"DRAFT","accepted_answers":["DRAFT"],"summary":"Five-letter Thunder/NBA word."},"lookback":{"game":{"game_date":"2012-06-12","matchup":"Miami Heat at Oklahoma City Thunder","scoreboard":"Thunder 105, MIA 94","winner":"Thunder","margin":11,"game_high_points":["Kevin Durant"],"okc_rebounds_leader":["Kevin Durant"],"okc_assists_leader":["Russell Westbrook"]},"board":{"revealed":["date","home_team","away_team"]}},"article":{"article_title":"Daily Thunder Playbook","article_url":"https://www.dailythunder.com/tag/playbook/"}}}
+{
+  "schema_version": "playbook_day_public.v1",
+  "date": "2026-06-12",
+  "title": "Daily Thunder Playbook — June 12, 2026",
+  "status": "ready",
+  "canonical_path": "/playbook/daily/2026-06-12/",
+  "module_order": [
+    "daily_puzzle",
+    "lookback",
+    "article",
+    "play_next"
+  ],
+  "modules": {
+    "daily_puzzle": {
+      "schema_version": "hoardle_public.v1",
+      "type": "hoardle",
+      "status": "ready",
+      "title": "Hoardle",
+      "answer": "DRAFT",
+      "accepted_answers": [
+        "DRAFT"
+      ],
+      "theme": "Thunder-logo palette",
+      "summary": "Five-letter Thunder/NBA/common-word puzzle.",
+      "guide": "Use Hoardle branding, not Wordle branding."
+    },
+    "lookback": {
+      "schema_version": "lookback_public.v1",
+      "status": "ready",
+      "mode": "summer_finals_week",
+      "anchor": "exact date match",
+      "event_id": "espn_OKC_2012_p016",
+      "game": {
+        "game_date": "2012-06-12",
+        "matchup": "Miami Heat at Oklahoma City Thunder",
+        "home_team": "Oklahoma City Thunder",
+        "away_team": "Miami Heat",
+        "scoreboard": "Thunder 105, MIA 94",
+        "winner": "Thunder",
+        "margin": 11,
+        "game_high_points": [
+          "Kevin Durant"
+        ],
+        "okc_rebounds_leader": [
+          "Nick Collison"
+        ],
+        "okc_assists_leader": [
+          "Russell Westbrook"
+        ]
+      },
+      "board": {
+        "revealed": [
+          "date",
+          "home_team",
+          "away_team"
+        ],
+        "guess_fields": [
+          "winner",
+          "margin",
+          "game_high_points",
+          "okc_rebounds_leader",
+          "okc_assists_leader"
+        ]
+      }
+    },
+    "article": {
+      "schema_version": "article_link_public.v1",
+      "status": "ready",
+      "selection_mode": "editor_selected",
+      "article_title": "Lights out: OKC closes out Miami in Game 1, 105-94",
+      "article_url": "https://www.dailythunder.com/lights-out-okc-closes-out-miami-in-game-1-105-94/",
+      "post_type": "recap",
+      "access": "public_or_preview",
+      "preamble": ""
+    }
+  },
+  "omitted_modules": []
+}
