@@ -14,17 +14,24 @@
   }
   function makeChart(anchor, cfg, pz) {
     const chart = DP.child(anchor, 'div', 'chart-popout-court');
+    function renderBlankChart(message) {
+      chart.replaceChildren();
+      const court = DP.child(chart, 'div', 'chart-halfcourt');
+      court.style.gridTemplateColumns = `repeat(${cfg.cols}, 1fr)`;
+      court.style.gridTemplateRows = `repeat(${cfg.rows}, 1fr)`;
+      for (let r = 0; r < cfg.rows; r++) for (let c = 0; c < cfg.cols; c++) DP.child(court, 'span', 'chart-cell', '');
+      DP.child(chart, 'p', 'dtp-small', message || (pz.source_url ? 'Blank chart grid. Open the source game page for the CourtSketch chart.' : 'Blank chart grid.'));
+    }
     const imagePath = chartImagePath(pz);
     if (imagePath) {
       const img = DP.child(chart, 'img', 'chart-static-image');
       img.src = imagePath;
       img.alt = `${pz.title || 'ShaiSweeper'} source shot chart`;
+      img.addEventListener('error', () => renderBlankChart('Static chart image did not load. Blank chart grid shown instead; open the source game page for the CourtSketch chart.'));
       DP.child(chart, 'p', 'dtp-small', 'Static chart image. Open the source game page for deeper review.');
       return;
     }
-    const court = DP.child(chart, 'div', 'chart-halfcourt');
-    for (let r = 0; r < cfg.rows; r++) for (let c = 0; c < cfg.cols; c++) DP.child(court, 'span', 'chart-cell', '');
-    DP.child(chart, 'p', 'dtp-small', pz.source_url ? 'Blank chart grid. Open the source game page for the CourtSketch chart.' : 'Blank chart grid. Static source image not attached yet.');
+    renderBlankChart(pz.source_url ? 'Blank chart grid. Add chart_image_path when a weekly CourtSketch image is pulled.' : 'Blank chart grid. Source chart URL not attached.');
   }
   DP.renderShaiSweeper = function(parent, pz) {
     const cfg = boardConfig(pz);
