@@ -12,9 +12,12 @@
     return { away, home };
   }
   function matchesAnswer(choice, answer) {
-    const c = DP.norm(choice);
-    const a = DP.norm(answer);
-    return !!c && !!a && (c.includes(a) || a.includes(c) || (a === 'thunder' && c.includes('oklahoma city')));
+    const c = DP.norm(choice).replace(/\s+/g, '');
+    const answers = Array.isArray(answer) ? answer : [answer];
+    return answers.some(a => {
+      const n = DP.norm(a).replace(/\s+/g, '');
+      return !!c && !!n && (c.includes(n) || n.includes(c) || (n === 'thunder' && c.includes('oklahomacity')));
+    });
   }
   function marginBucket(margin) {
     const n = Number(margin);
@@ -23,6 +26,7 @@
     if (n <= 15) return '11-15';
     return '16+';
   }
+  function answerText(value) { return DP.listText(value); }
   DP.renderLookback = function(parent, lookback) {
     if (!lookback || !lookback.game) return;
     const game = lookback.game;
@@ -31,13 +35,9 @@
     DP.child(look, 'div', 'dp-eyebrow', 'On This Day');
     DP.child(look, 'h2', 'dp-panel-title', game.matchup || 'Thunder lookback');
     DP.child(look, 'p', 'date', `${game.game_date || ''} · final score hidden until reveal`.trim());
-    const facts = DP.child(look, 'div', 'dp-facts');
-    DP.child(facts, 'div', 'dp-fact', `date: ${DP.listText(game.game_date)}`);
-    if (teams.away) DP.child(facts, 'div', 'dp-fact', `away: ${teams.away}`);
-    if (teams.home) DP.child(facts, 'div', 'dp-fact', `home: ${teams.home}`);
     const quiz = DP.child(look, 'div', 'scoreboard-trivia button-trivia');
-    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range, then reveal the yearbook card.');
-    const state = { winner: '', margin: '' };
+    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range. Player fields respond as you type.');
+    const state = { winner: '', margin: '', players: {} };
     function question(label, className) {
       const box = DP.child(quiz, 'div', `trivia-card ${className || ''}`);
       DP.child(box, 'div', 'trivia-label', label);
@@ -53,6 +53,7 @@
         state.winner = team;
         winnerQ.options.querySelectorAll('button').forEach(x => x.classList.remove('selected'));
         b.classList.add('selected');
+        winnerQ.result.textContent = `Selected: ${team}`;
       });
     });
     const marginQ = question('Winning margin range', 'margin-question');
@@ -63,11 +64,36 @@
         state.margin = bucket;
         marginQ.options.querySelectorAll('button').forEach(x => x.classList.remove('selected'));
         b.classList.add('selected');
+        marginQ.result.textContent = `Selected: ${bucket}`;
       });
     });
+    const playerFields = [
+      ['game_high_points', 'Game-high scorer'],
+      ['okc_rebounds_leader', 'OKC rebounds leader'],
+      ['okc_assists_leader', 'OKC assists leader']
+    ].filter(([key]) => Array.isArray(game[key]) && game[key].length);
     const playerQ = DP.child(quiz, 'div', 'trivia-card player-card');
     DP.child(playerQ, 'div', 'trivia-label', 'Player leaders');
-    DP.child(playerQ, 'p', 'trivia-note', 'Player-name guessing is paused until roster/autocomplete data exists. Reveal shows the leaders instead of making you type names blind.');
+    if (!playerFields.length) {
+      DP.child(playerQ, 'p', 'trivia-note', 'Player leader data is not attached for this game. Reveal shows the available scoreboard card.');
+    }
+    const playerResults = {};
+    playerFields.forEach(([key, label]) => {
+      const row = DP.child(playerQ, 'label', 'trivia-text-row');
+      DP.child(row, 'span', '', label);
+      const input = DP.child(row, 'input', 'trivia-text-input');
+      input.type = 'text'; input.autocomplete = 'off'; input.placeholder = 'Type a player name';
+      const result = DP.child(playerQ, 'div', 'trivia-result live', 'Start typing for feedback.');
+      playerResults[key] = result;
+      input.addEventListener('input', () => {
+        state.players[key] = input.value;
+        const value = input.value.trim();
+        if (!value) { result.textContent = 'Start typing for feedback.'; result.className = 'trivia-result live'; return; }
+        const ok = matchesAnswer(value, game[key]);
+        result.textContent = ok ? 'Match found.' : 'No match yet.';
+        result.className = `trivia-result live ${ok ? 'correct' : 'incorrect'}`;
+      });
+    });
     const controls = DP.child(quiz, 'div', 'dtp-controls');
     const check = DP.child(controls, 'button', 'dtp-btn', 'Check picks');
     const reveal = DP.child(controls, 'button', 'dtp-btn secondary', 'Reveal yearbook');
@@ -79,14 +105,23 @@
       winnerQ.result.className = `trivia-result ${winnerOk ? 'correct' : 'incorrect'}`;
       marginQ.result.textContent = state.margin ? (marginOk ? 'Correct' : `Answer: ${marginBucket(game.margin)} (${game.margin})`) : 'Pick a margin range.';
       marginQ.result.className = `trivia-result ${marginOk ? 'correct' : 'incorrect'}`;
-      status.textContent = winnerOk && marginOk ? 'Clean hit. Reveal the yearbook.' : 'Close enough for summer. Reveal when ready.';
+      let playerOk = 0;
+      playerFields.forEach(([key]) => {
+        const ok = matchesAnswer(state.players[key] || '', game[key]);
+        if (ok) playerOk++;
+        if (playerResults[key]) {
+          playerResults[key].textContent = ok ? 'Correct' : `Answer: ${answerText(game[key])}`;
+          playerResults[key].className = `trivia-result ${ok ? 'correct' : 'incorrect'}`;
+        }
+      });
+      status.textContent = winnerOk && marginOk ? `Scoreboard solved. Player matches: ${playerOk}/${playerFields.length}. Reveal when ready.` : `Scoreboard close enough. Player matches: ${playerOk}/${playerFields.length}. Reveal when ready.`;
     }
     function revealAll() {
       DP.state.revealed = true;
       const card = DP.child(look, 'div', 'on-this-day-card');
       DP.child(card, 'div', 'trivia-label', 'Yearbook reveal');
-      DP.child(card, 'p', '', `${game.scoreboard || 'Final score pending'} · Winner: ${game.winner || '—'} · Margin: ${DP.listText(game.margin)}`);
-      DP.child(card, 'p', '', `Game high: ${DP.listText(game.game_high_points)} · OKC rebounds: ${DP.listText(game.okc_rebounds_leader)} · OKC assists: ${DP.listText(game.okc_assists_leader)}`);
+      DP.child(card, 'p', '', `${game.scoreboard || 'Final score pending'} · Winner: ${game.winner || '—'} · Margin: ${answerText(game.margin)}`);
+      DP.child(card, 'p', '', `Game high: ${answerText(game.game_high_points)} · OKC rebounds: ${answerText(game.okc_rebounds_leader)} · OKC assists: ${answerText(game.okc_assists_leader)}`);
       reveal.disabled = true;
       check.disabled = true;
       status.textContent = 'Yearbook unlocked.';
@@ -98,7 +133,7 @@
   DP.renderArticle = function(parent, article) {
     if (!article || parent.querySelector?.('.dp-yearbook')) return;
     const yb = DP.child(parent, 'section', 'card dp-yearbook');
-    DP.child(yb, 'div', 'dp-eyebrow', 'Yearbook entry');
+    DP.child(yb, 'div', 'dp-eyebrow', 'Archive entry');
     DP.child(yb, 'h2', '', article.article_title || 'Daily Thunder article');
     DP.child(yb, 'p', '', DP.state.revealed ? (article.preamble || 'Unlocked from the On This Day board.') : 'Locked until the On This Day board reveal.');
     if (DP.state.revealed && article.article_url) {
@@ -114,6 +149,6 @@
       const b = DP.child(wrap, 'button', 'btn btn-primary', `Next: ${DP.dateLabel(next.date)}`);
       b.type = 'button';
       b.addEventListener('click', () => { DP.state.active += 1; DP.state.revealed = false; DP.render(); });
-    } else DP.child(wrap, 'p', '', 'End of the imported Playbook slate.');
+    } else DP.child(wrap, 'p', '', 'End of the imported Daily Thunder app slate.');
   };
 })();
