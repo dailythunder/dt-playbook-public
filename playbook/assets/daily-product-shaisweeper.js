@@ -9,14 +9,22 @@
     if (!rows || !cols || !Array.isArray(mines) || !mines.length) return null;
     return { rows, cols, mines: mines.map(c => Array.isArray(c) ? `${c[0]},${c[1]}` : `${c.row},${c.col}`), bombs: Number(pz.bombs || mines.length) };
   }
+  function chartImagePath(pz) {
+    return pz.chart_image_path || pz.chart_image || pz.static_chart_image || pz.public_chart_image_path || pz.shotchart_image || '';
+  }
   function makeChart(anchor, cfg, pz) {
     const chart = DP.child(anchor, 'div', 'chart-popout-court');
-    const court = DP.child(chart, 'div', 'chart-halfcourt');
-    for (let r = 0; r < cfg.rows; r++) for (let c = 0; c < cfg.cols; c++) {
-      const cell = DP.child(court, 'span', 'chart-cell', '');
-      if (cfg.mines.includes(`${r},${c}`)) cell.classList.add('shot-dot');
+    const imagePath = chartImagePath(pz);
+    if (imagePath) {
+      const img = DP.child(chart, 'img', 'chart-static-image');
+      img.src = imagePath;
+      img.alt = `${pz.title || 'ShaiSweeper'} source shot chart`;
+      DP.child(chart, 'p', 'dtp-small', 'Static chart image. Open the source game page for deeper review.');
+      return;
     }
-    DP.child(chart, 'p', 'dtp-small', pz.source_url ? 'Chart opens the source game page.' : 'Generated from reviewed playfile coordinates.');
+    const court = DP.child(chart, 'div', 'chart-halfcourt');
+    for (let r = 0; r < cfg.rows; r++) for (let c = 0; c < cfg.cols; c++) DP.child(court, 'span', 'chart-cell', '');
+    DP.child(chart, 'p', 'dtp-small', pz.source_url ? 'Blank chart grid. Open the source game page for the CourtSketch chart.' : 'Blank chart grid. Static source image not attached yet.');
   }
   DP.renderShaiSweeper = function(parent, pz) {
     const cfg = boardConfig(pz);
@@ -72,7 +80,7 @@
         b.addEventListener('contextmenu', ev => { ev.preventDefault(); if(over || revealed.has(key)) return; startTimer(); flagged.has(key) ? flagged.delete(key) : flagged.add(key); render(); });
       }
       remaining.textContent = String(cfg.bombs - flagged.size).padStart(3,'0');
-      status.textContent = over ? (won() ? 'Cleared the court.' : 'Hit a made shot.') : 'Shot-chart grid is the default. Switch views any time.';
+      status.textContent = over ? (won() ? 'Cleared the court.' : 'Hit a made shot.') : 'Blank shot-chart grid is the default. Switch views any time.';
     }
     viewShot.addEventListener('click', () => setView('shot'));
     viewHardwood.addEventListener('click', () => setView('hardwood'));
