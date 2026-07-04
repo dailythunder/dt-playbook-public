@@ -1,1 +1,226 @@
-{"schema_version":"playbook_day_public.v1","date":"2026-06-16","title":"Daily Thunder Playbook — 2026-06-16","status":"ready","canonical_path":"/playbook/daily/2026-06-16/","modules":{"daily_puzzle":{"type":"shaisweeper","status":"ready","title":"2’s Game 2","rows":9,"cols":12,"bombs":11,"twopm":10,"threepm":1,"free_throws_included":false,"free_throw_policy":"excluded_from_standard_board","hint_lines":["2PM: 10","3PM: 1"],"board":{"rows":9,"cols":12,"free_throws_included":false,"mine_cells":[{"row":0,"col":2},{"row":1,"col":5},{"row":1,"col":9},{"row":2,"col":1},{"row":3,"col":4},{"row":4,"col":8},{"row":5,"col":2},{"row":6,"col":6},{"row":7,"col":10},{"row":8,"col":3},{"row":8,"col":7}]}},"lookback":{"game":{"game_date":"2025-06-08","matchup":"Indiana Pacers at Oklahoma City Thunder","scoreboard":"Thunder 123, IND 107","winner":"Thunder","margin":16,"game_high_points":["Shai Gilgeous-Alexander"],"okc_rebounds_leader":["Chet Holmgren"],"okc_assists_leader":["Shai Gilgeous-Alexander"]},"board":{"revealed":["date","home_team","away_team"]}},"article":{"article_title":"Thunder crumble in the second half, 91-85","article_url":"https://www.dailythunder.com/thunder-crumble-in-the-second-half-91-85/"}}}
+{
+  "schema_version": "playbook_day_public.v1",
+  "date": "2026-06-16",
+  "title": "Daily Thunder Playbook — June 16, 2026",
+  "status": "ready",
+  "canonical_path": "/playbook/daily/2026-06-16/",
+  "module_order": [
+    "daily_puzzle",
+    "lookback",
+    "article",
+    "play_next"
+  ],
+  "modules": {
+    "daily_puzzle": {
+      "schema_version": "shaisweeper_public.v2",
+      "type": "shaisweeper",
+      "status": "ready",
+      "reviewed": true,
+      "date": "2026-06-16",
+      "title": "2’s Game 2",
+      "grid_id": "shaisweeper_standard_9x12_v4",
+      "standard_grid_id": "shaisweeper_standard_9x12_v4",
+      "rows": 9,
+      "cols": 12,
+      "mode": "standard",
+      "source_url": "https://courtsketch.com/gameshots/42400402",
+      "chart_source": "CourtSketch: OKC/Shai selected, qualifier symbols off",
+      "chart_image_status": "manual_optional_not_attached",
+      "nba_game_id": "0042400402",
+      "points": 34,
+      "fgm": 11,
+      "twopm": 10,
+      "threepm": 1,
+      "ftm": 11,
+      "bombs": 11,
+      "fgm_bombs": 11,
+      "ftm_bombs": 0,
+      "three_point_bombs": 0,
+      "fg_cell_ids": [
+        "E4",
+        "F4",
+        "G4",
+        "F6",
+        "H6",
+        "E7",
+        "F7",
+        "E8",
+        "F8",
+        "A9",
+        "F9"
+      ],
+      "cell_ids": [
+        "E4",
+        "F4",
+        "G4",
+        "F6",
+        "H6",
+        "E7",
+        "F7",
+        "E8",
+        "F8",
+        "A9",
+        "F9"
+      ],
+      "mine_cells": [
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "fg_mine_cells": [
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "public_clues": [
+        "FGM: 11",
+        "3PM: 1"
+      ],
+      "free_throw_policy": "standard launch excludes FTs",
+      "shot_fit_status": "accepted_standard_9x12",
+      "fit_policy": "standard_9x12_v4_editor_approved",
+      "difficulty": "standard",
+      "foreground_clue": "Shai tied up the 2025 Finals, 2 points at a time.",
+      "hint_button_title": "Need a hint?",
+      "hint_lines": [
+        "FGM: 11",
+        "3PM: 1"
+      ],
+      "summary": "True ShaiSweeper board. Bomb count equals Shai made field goals.",
+      "guide": "Use the reviewed 9x12 ShaiSweeper grid. Standard launch excludes free throws.",
+      "game_id": "0042400402"
+    },
+    "lookback": {
+      "schema_version": "lookback_public.v1",
+      "status": "ready",
+      "mode": "summer_finals_week",
+      "anchor": "summer fallback: 2012 Finals Game 3",
+      "event_id": "espn_OKC_2012_p018",
+      "game": {
+        "game_date": "2012-06-17",
+        "matchup": "Oklahoma City Thunder at Miami Heat",
+        "home_team": "Miami Heat",
+        "away_team": "Oklahoma City Thunder",
+        "scoreboard": "MIA 91, Thunder 85",
+        "winner": "Miami Heat",
+        "margin": 6,
+        "game_high_points": [
+          "LeBron James"
+        ],
+        "okc_rebounds_leader": [
+          "Kendrick Perkins"
+        ],
+        "okc_assists_leader": [
+          "James Harden"
+        ]
+      },
+      "board": {
+        "revealed": [
+          "date",
+          "home_team",
+          "away_team"
+        ],
+        "guess_fields": [
+          "winner",
+          "margin",
+          "game_high_points",
+          "okc_rebounds_leader",
+          "okc_assists_leader"
+        ]
+      }
+    },
+    "article": {
+      "schema_version": "article_link_public.v1",
+      "status": "ready",
+      "selection_mode": "editor_selected",
+      "article_title": "Thunder crumble in the second half, 91-85",
+      "article_url": "https://www.dailythunder.com/thunder-crumble-in-the-second-half-91-85/",
+      "post_type": "recap",
+      "access": "public_or_preview",
+      "preamble": ""
+    }
+  },
+  "omitted_modules": []
+}

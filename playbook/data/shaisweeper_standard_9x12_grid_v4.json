@@ -1,0 +1,16 @@
+{
+  "id": "shaisweeper_standard_9x12_v4",
+  "rows": 9,
+  "cols": 12,
+  "cell_id_format": "A1-L9",
+  "canonical_detail_file": "shaisweeper_standard_9x12_grid_v4.csv",
+  "launch_policy": {
+    "standard": "made field goals only; one FGM = one mine",
+    "free_throws": "excluded from standard launch mode",
+    "three_pointers": "one made three = one mine; 3PM is clue/audit only"
+  },
+  "editor_notes": [
+    "Full cell-role map is stored in the CSV to keep connector patch payloads small.",
+    "The public runtime uses each playfile rows/cols/cell_ids/mine_cells, not this grid JSON."
+  ]
+}

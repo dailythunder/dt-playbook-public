@@ -5,44 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Playbook Crosswords</title>
   <link rel="stylesheet" href="../assets/playbook.css" />
+  <link rel="stylesheet" href="../assets/daily-product-core.css" />
+  <link rel="stylesheet" href="../assets/daily-product-games.css" />
 </head>
 <body>
   <main class="playbook-shell">
     <header class="playbook-header">
       <div class="kicker">Thunder Playbook</div>
       <h1>Archived Crosswords</h1>
-      <p class="subtitle">Crossword wrappers in a clean editorial shell, with puzzle-surface framing.</p>
+      <p class="subtitle">Playable Daily Thunder crossword archive, backed by real Crossword Compiler source.</p>
       <div class="nav-row">
         <a class="btn" href="../">← Playbook Home</a>
-        <a class="btn btn-secondary" href="../games/">Published Games</a>
-        <a class="btn btn-primary" href="../prototypes/">Playbook Lab</a>
+        <a class="btn btn-secondary" href="../daily/">Daily Playbook</a>
+        <a class="btn" href="../games/">Games</a>
       </div>
     </header>
 
     <section class="card">
       <div class="meta-row">
         <span class="chip gold" id="meta">Loading…</span>
+        <span class="chip blue">Native player · real XML source</span>
       </div>
-      <div class="play-surface">
-        <ol id="list"></ol>
-      </div>
+      <div id="crossword-player"></div>
+      <div class="play-surface"><ol id="list"></ol></div>
     </section>
   </main>
-<script>
-(async function(){
-  const res = await fetch('../data/playbook_index.json');
-  const data = await res.json();
-  document.getElementById('meta').textContent = `${data.crosswords_total} archived crossword puzzles`;
-  const list = document.getElementById('list');
-  data.crosswords.forEach((cw) => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = '../../' + cw.wrapper_path;
-    a.textContent = cw.title;
-    li.appendChild(a);
-    list.appendChild(li);
+
+  <script src="../assets/daily-product-core.js"></script>
+  <script src="../assets/daily-product-hoardle-crossword.js"></script>
+  <script>
+  (async function(){
+    const base = new URL('../../puzzle_archive/crossword_info_import/crosswords_archive/', location.href);
+    const params = new URLSearchParams(location.search);
+    const activeSlug = params.get('slug') || '';
+    const meta = document.getElementById('meta');
+    const list = document.getElementById('list');
+    const player = document.getElementById('crossword-player');
+    const manifestRes = await fetch(new URL('manifest.json', base), { cache: 'no-cache' });
+    if (!manifestRes.ok) throw new Error(`crossword manifest ${manifestRes.status}`);
+    const puzzles = await manifestRes.json();
+    meta.textContent = `${puzzles.length} archived crossword puzzle${puzzles.length === 1 ? '' : 's'}`;
+
+    function name(node){ return (node?.localName || node?.nodeName || '').replace(/^.*:/,''); }
+    function nodes(root, tag){ return Array.from(root.getElementsByTagName('*')).filter(n => name(n) === tag); }
+    function first(root, tag){ return nodes(root, tag)[0] || null; }
+    function nint(value){ const m = String(value || '').match(/^\d+/); return m ? Number(m[0]) : null; }
+    function range(value){ const p = String(value || '').split('-', 2); if (p.length === 1) { const v = nint(p[0]); return [v, v]; } return [nint(p[0]), nint(p[1])]; }
+    function txt(node){ return Array.from(node?.childNodes || []).map(n => n.textContent || '').join('').replace(/\s+/g,' ').trim(); }
+    function parseXmlJs(jsText, entry){
+      const slug = entry.slug;
+      const match = jsText.match(/CrosswordPuzzleData\s*=\s*("[\s\S]*?");?\s*$/) || jsText.match(/CrosswordPuzzleData\s*=\s*("[\s\S]*?");/);
+      if (!match) throw new Error('CrosswordPuzzleData assignment missing');
+      const doc = new DOMParser().parseFromString(JSON.parse(match[1]), 'application/xml');
+      if (first(doc, 'parsererror')) throw new Error('Crossword XML parse failed');
+      const crossword = first(doc, 'crossword') || doc.documentElement;
+      const gridEl = first(crossword, 'grid');
+      if (!gridEl) throw new Error('Crossword grid missing');
+      const width = Number(gridEl.getAttribute('width') || 0), height = Number(gridEl.getAttribute('height') || 0);
+      const metadata = {};
+      const metaEl = first(crossword, 'metadata');
+      if (metaEl) Array.from(metaEl.children || []).forEach(child => { metadata[name(child)] = txt(child); });
+      const gridCells = new Map();
+      nodes(gridEl, 'cell').forEach(cell => {
+        const x = nint(cell.getAttribute('x')), y = nint(cell.getAttribute('y'));
+        if (!x || !y) return;
+        const type = cell.getAttribute('type') === 'block' ? 'block' : 'letter';
+        const number = cell.getAttribute('number');
+        gridCells.set(`${x},${y}`, { x, y, row: y - 1, col: x - 1, cell_id: `${String.fromCharCode(64 + x)}${y}`, type, solution: type === 'block' ? '' : (cell.getAttribute('solution') || ''), number: /^\d+$/.test(String(number || '')) ? Number(number) : null });
+      });
+      const grid = [];
+      for (let y = 1; y <= height; y++) {
+        let row = '';
+        for (let x = 1; x <= width; x++) {
+          const cell = gridCells.get(`${x},${y}`);
+          row += (!cell || cell.type === 'block') ? '#' : cell.solution;
+        }
+        grid.push(row);
+      }
+      function wordCoords(word){
+        const xAttr = word.getAttribute('x') || '', yAttr = word.getAttribute('y') || '';
+        const coords = [];
+        if (yAttr.includes('-') && !xAttr.includes('-')) {
+          const x = nint(xAttr), [y1, y2] = range(yAttr);
+          for (let y = y1; y <= y2; y++) { const cell = gridCells.get(`${x},${y}`); if (cell && cell.type !== 'block') coords.push([x, y]); }
+          return ['down', coords];
+        }
+        const y = nint(yAttr), [x1, x2] = range(xAttr);
+        for (let x = x1; x <= x2; x++) { const cell = gridCells.get(`${x},${y}`); if (cell && cell.type !== 'block') coords.push([x, y]); }
+        return ['across', coords];
+      }
+      const words = new Map();
+      nodes(crossword, 'word').forEach(word => {
+        const id = word.getAttribute('id'); if (!id) return;
+        const [direction, coords] = wordCoords(word);
+        const answer = coords.map(([x,y]) => gridCells.get(`${x},${y}`)?.solution || '').join('');
+        words.set(id, { word_id: id, direction, answer, cells: coords.map(([x,y]) => [y - 1, x - 1]), cell_ids: coords.map(([x,y]) => gridCells.get(`${x},${y}`)?.cell_id).filter(Boolean), source_coordinates: coords.map(([x,y]) => ({x,y})), length: answer.length });
+      });
+      const clues = [];
+      nodes(crossword, 'clues').forEach(group => {
+        const groupDirection = txt(first(group, 'title')).toLowerCase();
+        Array.from(group.children || []).filter(child => name(child) === 'clue').forEach(clue => {
+          const wordId = String(clue.getAttribute('word') || '').split(',')[0];
+          const word = words.get(wordId) || {};
+          const rawNumber = clue.getAttribute('number') || '';
+          clues.push({ number: /^\d+$/.test(rawNumber) ? Number(rawNumber) : rawNumber, direction: String(word.direction || groupDirection || '').toLowerCase(), word_id: wordId, clue: txt(clue), answer: word.answer || '', format: clue.getAttribute('format') || String(word.length || ''), cells: word.cells || [], cell_ids: word.cell_ids || [], source_coordinates: word.source_coordinates || [] });
+        });
+      });
+      const cells = [];
+      for (let y = 1; y <= height; y++) for (let x = 1; x <= width; x++) cells.push(gridCells.get(`${x},${y}`) || { x, y, row: y - 1, col: x - 1, cell_id: `${String.fromCharCode(64 + x)}${y}`, type: 'block', solution: '', number: null });
+      const numbers = cells.filter(cell => cell.number !== null && cell.number !== undefined).map(cell => ({ number: cell.number, row: cell.row, col: cell.col, x: cell.x, y: cell.y, cell_id: cell.cell_id, starts: clues.filter(clue => clue.cells?.[0]?.[0] === cell.row && clue.cells?.[0]?.[1] === cell.col).map(clue => clue.direction) }));
+      return { schema_version: 'crossword_normalized.v1-runtime-xml', slug, title: entry.title || metadata.title || slug.replaceAll('_',' '), source_url: entry.url || `https://crossword.info/dailythunder/${slug}`, source_files: { xml_js_path: `puzzle_archive/crossword_info_import/crosswords_archive/${slug}/${entry.js || slug + '_xml.js'}`, pdf_path: entry.pdf ? `puzzle_archive/crossword_info_import/crosswords_archive/${slug}/${entry.pdf}` : null, wrapper_path: `puzzle_archive/crossword_info_import/crosswords_archive/${slug}/index.html` }, width, height, metadata, grid, cells, numbers, across: clues.filter(c => c.direction === 'across'), down: clues.filter(c => c.direction === 'down'), clues, answers: clues.map(c => ({ number: c.number, direction: c.direction, answer: c.answer, cells: c.cells, cell_ids: c.cell_ids })) };
+    }
+    async function loadCrossword(entry){
+      const js = entry.js || `${entry.slug}_xml.js`;
+      const res = await fetch(new URL(`${entry.slug}/${js}`, base), { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`${entry.slug}/${js} ${res.status}`);
+      return parseXmlJs(await res.text(), entry);
+    }
+    const active = puzzles.find(cw => cw.slug === activeSlug) || null;
+    if (active) {
+      const card = document.createElement('section');
+      card.className = 'card dp-puzzle-card';
+      const h2 = document.createElement('h2');
+      h2.className = 'dp-panel-title';
+      h2.textContent = active.title || active.slug;
+      card.appendChild(h2);
+      const status = document.createElement('p');
+      status.className = 'date';
+      status.textContent = `Loading ${active.slug}…`;
+      card.appendChild(status);
+      player.appendChild(card);
+      try {
+        const data = await loadCrossword(active);
+        status.textContent = `${data.width}×${data.height} · ${data.clues.length} clues · ${active.slug}`;
+        window.DTPlaybook.renderCrossword(card, { type: 'crossword', title: data.title, crossword: data });
+      } catch (err) {
+        status.textContent = `Crossword failed to load: ${err.message}`;
+      }
+    }
+    puzzles.forEach(cw => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `?slug=${encodeURIComponent(cw.slug)}`;
+      a.textContent = cw.title || cw.slug;
+      li.appendChild(a);
+      const small = document.createElement('span');
+      small.className = 'date';
+      small.textContent = ` — ${cw.slug}`;
+      li.appendChild(small);
+      list.appendChild(li);
+    });
+  })().catch(err => {
+    document.getElementById('meta').textContent = 'Crossword archive failed to load';
+    document.getElementById('list').textContent = err.message;
   });
-})();
-</script>
+  </script>
 </body>
 </html>

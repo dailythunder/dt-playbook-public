@@ -1,26 +1,57 @@
-# Playbook public data contract
+# Daily Thunder app export contract
 
-These files are imported public-safe exports from `dailythunder/dt-archive-private`.
-
-Authoritative private source path:
+Private source:
 
 ```text
-archive/event_registry/reviewed/playbook_days/
+archive/event_registry/reviewed/playbook_days/YYYY-MM-DD/*.reviewed.json
+archive/event_registry/reviewed/word_game_clue_bank.json
+archive/event_registry/reviewed/hoardle_dictionary.json
 ```
 
-Private export path:
+Private public-safe export:
 
 ```text
-archive/event_registry/dist-public/
+archive/event_registry/dist-public/playbook_manifest.json
+archive/event_registry/dist-public/playbook_days/YYYY-MM-DD.json
+archive/event_registry/dist-public/hoardle_dictionary.json
+archive/event_registry/dist-public/crosswords/<slug>.json
 ```
 
-Public import path in this repo:
+Public renderer import:
 
 ```text
 playbook/data/playbook_manifest.json
 playbook/data/playbook_days/YYYY-MM-DD.json
+playbook/data/hoardle_dictionary.json
+playbook/data/crosswords/<slug>.json
 ```
 
-Do not hand-author or manually patch these JSON files as source content. If a day, puzzle, lookback, or article needs editing, change the reviewed source in `dt-archive-private`, validate/export there, then re-import the public-safe JSON here.
+Hoardle dictionary:
 
-Patch 02A imports the June 14, June 15, and June 17 public-safe Playbook days. June 16 remains skipped because its ShaiSweeper puzzle is `source_pending` in the private source contract.
+```text
+solution_pool_52 = candidate answer set
+valid_guesses = accepted five-letter index
+public JS never owns the dictionary
+current v3 public export contains 396 valid guesses
+```
+
+ShaiSweeper launch standard:
+
+```text
+shaisweeper_standard_9x12_v4
+standard mode = made field goals only
+free throws excluded from launch mode
+one made three = one mine, not three mines
+```
+
+ShaiSweeper chart handling:
+
+```text
+chart_image_path is optional
+if present, the public popout renders that static image
+if missing or broken, the public popout renders a blank 9x12 chart grid
+source_url always links to the CourtSketch game page
+mine locations are never drawn on the public chart popout before reveal
+```
+
+The public repo must never become the authoring source. Import validated public-safe exports only.

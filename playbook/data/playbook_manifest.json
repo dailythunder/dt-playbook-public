@@ -1,1 +1,112 @@
-{"schema_version":"playbook_manifest.v1","generated_at":"2026-06-30T00:00:00Z","source":"public_beta_date_remap_from_archive_export","days":[{"date":"2026-07-06","title":"Daily Thunder Playbook — 2026-07-06","status":"ready","file":"playbook_days/2026-07-06.json","canonical_path":"/playbook/daily/2026-07-06/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-07","title":"Daily Thunder Playbook — 2026-07-07","status":"ready","file":"playbook_days/2026-07-07.json","canonical_path":"/playbook/daily/2026-07-07/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-08","title":"Daily Thunder Playbook — 2026-07-08","status":"ready","file":"playbook_days/2026-07-08.json","canonical_path":"/playbook/daily/2026-07-08/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-09","title":"Daily Thunder Playbook — 2026-07-09","status":"ready","file":"playbook_days/2026-07-09.json","canonical_path":"/playbook/daily/2026-07-09/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-10","title":"Daily Thunder Playbook — 2026-07-10","status":"ready","file":"playbook_days/2026-07-10.json","canonical_path":"/playbook/daily/2026-07-10/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-11","title":"Daily Thunder Playbook — 2026-07-11","status":"ready","file":"playbook_days/2026-07-11.json","canonical_path":"/playbook/daily/2026-07-11/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-12","title":"Daily Thunder Playbook — 2026-07-12","status":"ready","file":"playbook_days/2026-07-12.json","canonical_path":"/playbook/daily/2026-07-12/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]},{"date":"2026-07-13","title":"Daily Thunder Playbook — 2026-07-13","status":"ready","file":"playbook_days/2026-07-13.json","canonical_path":"/playbook/daily/2026-07-13/","modules":["article","daily_puzzle","lookback"],"omitted_modules":[]}],"skipped":[]}
+{
+  "schema_version": "playbook_manifest.v1",
+  "generated_at": "2026-06-15T00:00:00Z",
+  "source": "archive/event_registry/reviewed/playbook_days",
+  "days": [
+    {
+      "date": "2026-06-10",
+      "title": "Daily Thunder Playbook — June 10, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-10.json",
+      "canonical_path": "/playbook/daily/2026-06-10/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-11",
+      "title": "Daily Thunder Playbook — June 11, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-11.json",
+      "canonical_path": "/playbook/daily/2026-06-11/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Daily Thunder Playbook — June 12, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-12.json",
+      "canonical_path": "/playbook/daily/2026-06-12/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-13",
+      "title": "Daily Thunder Playbook — June 13, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-13.json",
+      "canonical_path": "/playbook/daily/2026-06-13/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-14",
+      "title": "Daily Thunder Playbook — June 14, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-14.json",
+      "canonical_path": "/playbook/daily/2026-06-14/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Daily Thunder Playbook — June 15, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-15.json",
+      "canonical_path": "/playbook/daily/2026-06-15/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Daily Thunder Playbook — June 16, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-16.json",
+      "canonical_path": "/playbook/daily/2026-06-16/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Daily Thunder Playbook — June 17, 2026",
+      "status": "ready",
+      "file": "playbook_days/2026-06-17.json",
+      "canonical_path": "/playbook/daily/2026-06-17/",
+      "modules": [
+        "article",
+        "daily_puzzle",
+        "lookback"
+      ],
+      "omitted_modules": []
+    }
+  ],
+  "skipped": []
+}
