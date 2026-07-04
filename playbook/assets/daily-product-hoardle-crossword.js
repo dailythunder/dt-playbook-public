@@ -154,7 +154,16 @@
       inputs[key] = inp; cellsByKey[key] = cell;
     }
     let activeClue = clues[0];
-    let activeDirection = (activeClue?.direction || 'across').toLowerCase();
+    let activeDirection = String(activeClue?.direction || 'across').toLowerCase();
+    function choicesForKey(key) { return cluesByKey.get(key) || []; }
+    function clueForKey(key, preferred = activeDirection) {
+      const choices = choicesForKey(key);
+      if (!choices.length) return null;
+      const preferredClue = choices.find(c => String(c.direction || '').toLowerCase() === preferred);
+      if (preferredClue) return preferredClue;
+      if (activeClue && clueKeys(activeClue).includes(key)) return activeClue;
+      return choices[0];
+    }
     function setActive(clue, focus = true, focusKey = null) {
       if (!clue) return;
       activeClue = clue;
@@ -165,43 +174,50 @@
       const targetKey = focusKey || (first ? `${first[0]},${first[1]}` : null);
       if (focus && targetKey) inputs[targetKey]?.focus();
     }
-    function choicesForKey(key) { return cluesByKey.get(key) || []; }
-    function clueForKey(key) {
-      const choices = choicesForKey(key);
-      if (!choices.length) return null;
-      if (activeClue && clueKeys(activeClue).includes(key)) return activeClue;
-      return choices.find(c => String(c.direction || '').toLowerCase() === activeDirection) || choices[0];
-    }
     function toggleClueAtKey(key) {
       const choices = choicesForKey(key);
       if (choices.length <= 1) return choices[0] || null;
       const idx = choices.indexOf(activeClue);
       return choices[(idx + 1 + choices.length) % choices.length];
     }
-    function moveFrom(inp, dr, dc) {
-      const [r, c] = inp.dataset.key.split(',').map(Number);
+    function moveFrom(inp, dr, dc, preferredDirection) {
+      const currentKey = inp.dataset.key;
+      const currentClue = clueForKey(currentKey, preferredDirection);
+      if (currentClue) setActive(currentClue, false, currentKey);
+      const [r, c] = currentKey.split(',').map(Number);
       let nr = r + dr, nc = c + dc;
       while (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
-        const next = inputs[`${nr},${nc}`];
-        if (next) { next.focus(); return; }
+        const nextKey = `${nr},${nc}`;
+        const next = inputs[nextKey];
+        if (next) {
+          const nextClue = clueForKey(nextKey, preferredDirection);
+          if (nextClue) setActive(nextClue, false, nextKey);
+          next.focus();
+          return;
+        }
         nr += dr; nc += dc;
       }
     }
     Object.values(inputs).forEach(inp => {
-      inp.addEventListener('focus', () => { const clue = clueForKey(inp.dataset.key); if (clue) setActive(clue, false); });
-      inp.addEventListener('click', () => { const clue = toggleClueAtKey(inp.dataset.key); if (clue) setActive(clue, false); });
+      inp.addEventListener('focus', () => { const clue = clueForKey(inp.dataset.key, activeDirection); if (clue) setActive(clue, false, inp.dataset.key); });
+      inp.addEventListener('click', () => { const clue = toggleClueAtKey(inp.dataset.key); if (clue) setActive(clue, false, inp.dataset.key); });
       inp.addEventListener('input', () => {
         inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, '').slice(-1);
-        if (!activeClue || !inp.value) return;
+        if (!inp.value) return;
+        if (!activeClue || !clueKeys(activeClue).includes(inp.dataset.key)) {
+          const clue = clueForKey(inp.dataset.key, activeDirection);
+          if (clue) setActive(clue, false, inp.dataset.key);
+        }
         const keys = clueKeys(activeClue);
         const i = keys.indexOf(inp.dataset.key);
         if (i >= 0 && i < keys.length - 1) inputs[keys[i + 1]]?.focus();
       });
       inp.addEventListener('keydown', ev => {
-        if (ev.key === 'ArrowRight') { ev.preventDefault(); moveFrom(inp, 0, 1); }
-        if (ev.key === 'ArrowLeft') { ev.preventDefault(); moveFrom(inp, 0, -1); }
-        if (ev.key === 'ArrowDown') { ev.preventDefault(); moveFrom(inp, 1, 0); }
-        if (ev.key === 'ArrowUp') { ev.preventDefault(); moveFrom(inp, -1, 0); }
+        if (ev.key === 'ArrowRight') { ev.preventDefault(); moveFrom(inp, 0, 1, 'across'); }
+        if (ev.key === 'ArrowLeft') { ev.preventDefault(); moveFrom(inp, 0, -1, 'across'); }
+        if (ev.key === 'ArrowDown') { ev.preventDefault(); moveFrom(inp, 1, 0, 'down'); }
+        if (ev.key === 'ArrowUp') { ev.preventDefault(); moveFrom(inp, -1, 0, 'down'); }
+        if (ev.key === 'Tab' && activeClue) { return; }
       });
     });
     const clueList = DP.child(wrap, 'div', 'crossword-clues');
