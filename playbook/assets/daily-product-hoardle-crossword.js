@@ -1,11 +1,13 @@
 (() => {
   const DP = window.DTPlaybook;
+  const ASSET_BASE = document.currentScript?.src ? new URL('.', document.currentScript.src) : new URL('./assets/', location.href);
+  const DATA_BASE = new URL('../data/', ASSET_BASE);
   const HOARDLE_WORDS = new Set('DRAFT RINGS COURT ARENA HOOPS SHOOT PRESS COACH BENCH STEAL BLOCK DUNKS SCORE DRIVE PAINT PICKS TRADE WINGS GUARD FRONT SLATE PLAYS GAMES TEAMS FINAL BOUND ELITE FLOOR GLASS HUSTL TRACK CLUTCH SPACE POINT THREE CROWN'.split(' '));
   const KEY_ROWS = ['QWERTYUIOP','ASDFGHJKL','ZXCVBNM'];
   function setKeyState(btn, state) {
     const order = { absent: 1, present: 2, correct: 3 };
-    const cur = btn.dataset.state || '';
-    if ((order[state] || 0) >= (order[cur] || 0)) { btn.dataset.state = state; btn.className = `hoardle-key ${state}`; }
+    const cur = btn?.dataset.state || '';
+    if (btn && (order[state] || 0) >= (order[cur] || 0)) { btn.dataset.state = state; btn.className = `hoardle-key ${state}`; }
   }
   DP.renderHoardle = function(parent, pz) {
     const answer = String(pz.answer || '').toUpperCase();
@@ -74,13 +76,28 @@
     }));
     setTimeout(() => focusCell(0, 0), 50);
   };
-  DP.renderCrossword = function(parent, pz) {
-    const data = pz.crossword || pz;
+
+  function crosswordUrl(slug) {
+    return new URL(`crosswords/${encodeURIComponent(slug)}.json`, DATA_BASE).href;
+  }
+  function normalizeCrossword(data) {
+    const rawGrid = data.grid || [];
+    const grid = rawGrid.map(row => Array.isArray(row) ? row : String(row).split(''));
+    const clues = Array.isArray(data.clues) && data.clues.length ? data.clues : [ ...(data.across || []), ...(data.down || []) ];
+    return { ...data, grid, clues };
+  }
+  function renderCrosswordBoard(wrap, source, pz) {
+    const data = normalizeCrossword(source || {});
     const gridData = data.grid || [];
     const clues = data.clues || [];
-    const wrap = DP.child(parent, 'div', 'dtp-wrap crossword-play');
     if (!Array.isArray(gridData) || !gridData.length || !Array.isArray(clues) || !clues.length) { DP.child(wrap, 'div', 'dp-gameday-empty', 'Crossword data pending.'); return; }
-    DP.child(wrap, 'p', 'dtp-small', 'Fill the mini on the surface.');
+    DP.child(wrap, 'p', 'dtp-small', `${data.title || pz.title || 'Archived crossword'} · ${data.width || gridData[0].length}×${data.height || gridData.length} · ${clues.length} clues`);
+    if (data.source_url || data.source_files?.pdf_path) {
+      const links = DP.child(wrap, 'p', 'dtp-small crossword-source-links');
+      if (data.source_url) { const a = DP.child(links, 'a', '', 'Source'); a.href = data.source_url; a.target = '_blank'; a.rel = 'noopener'; }
+      if (data.source_url && data.source_files?.pdf_path) links.appendChild(document.createTextNode(' · '));
+      if (data.source_files?.pdf_path) { const p = DP.child(links, 'span', '', 'PDF/source link preserved in archive export'); p.title = data.source_files.pdf_path; }
+    }
     const grid = DP.child(wrap, 'div', 'crossword-grid');
     const rows = gridData.length, cols = gridData[0].length;
     grid.style.gridTemplateColumns = `repeat(${cols}, 2.25rem)`;
@@ -92,12 +109,32 @@
       const cell = DP.child(grid, 'div', 'crossword-cell-wrap');
       if (starts.has(key)) DP.child(cell, 'span', 'crossword-num', String(starts.get(key)));
       const inp = DP.child(cell, 'input', 'crossword-cell');
-      inp.maxLength = 1; inp.inputMode = 'text'; inp.autocomplete = 'off'; inp.dataset.answer = ch.toUpperCase(); inp.dataset.key = key;
+      inp.maxLength = 1; inp.inputMode = 'text'; inp.autocomplete = 'off'; inp.dataset.answer = String(ch || '').toUpperCase(); inp.dataset.key = key;
       inputs[key] = inp; cellsByKey[key] = cell;
     }
     let activeClue = clues[0];
-    function setActive(clue) { activeClue = clue; Object.values(cellsByKey).forEach(c => c.classList.remove('active-word')); (clue.cells || []).forEach(([r,c]) => cellsByKey[`${r},${c}`]?.classList.add('active-word')); const first = clue.cells?.[0]; if (first) inputs[`${first[0]},${first[1]}`]?.focus(); }
-    Object.values(inputs).forEach(inp => inp.addEventListener('input', () => { inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, '').slice(-1); if (!activeClue || !inp.value) return; const keys = activeClue.cells.map(([r,c]) => `${r},${c}`); const i = keys.indexOf(inp.dataset.key); if (i >= 0 && i < keys.length - 1) inputs[keys[i + 1]]?.focus(); }));
+    function clueKeys(clue) { return (clue?.cells || []).map(([r,c]) => `${r},${c}`); }
+    function setActive(clue, focus = true) { activeClue = clue; Object.values(cellsByKey).forEach(c => c.classList.remove('active-word')); clueKeys(clue).forEach(key => cellsByKey[key]?.classList.add('active-word')); const first = clue?.cells?.[0]; if (focus && first) inputs[`${first[0]},${first[1]}`]?.focus(); }
+    function activeForKey(key) { return clues.find(clue => clueKeys(clue).includes(key)); }
+    function moveFrom(inp, dr, dc) {
+      const [r, c] = inp.dataset.key.split(',').map(Number);
+      let nr = r + dr, nc = c + dc;
+      while (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+        const next = inputs[`${nr},${nc}`];
+        if (next) { next.focus(); return; }
+        nr += dr; nc += dc;
+      }
+    }
+    Object.values(inputs).forEach(inp => {
+      inp.addEventListener('focus', () => { const clue = activeForKey(inp.dataset.key); if (clue) setActive(clue, false); });
+      inp.addEventListener('input', () => { inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, '').slice(-1); if (!activeClue || !inp.value) return; const keys = clueKeys(activeClue); const i = keys.indexOf(inp.dataset.key); if (i >= 0 && i < keys.length - 1) inputs[keys[i + 1]]?.focus(); });
+      inp.addEventListener('keydown', ev => {
+        if (ev.key === 'ArrowRight') { ev.preventDefault(); moveFrom(inp, 0, 1); }
+        if (ev.key === 'ArrowLeft') { ev.preventDefault(); moveFrom(inp, 0, -1); }
+        if (ev.key === 'ArrowDown') { ev.preventDefault(); moveFrom(inp, 1, 0); }
+        if (ev.key === 'ArrowUp') { ev.preventDefault(); moveFrom(inp, -1, 0); }
+      });
+    });
     const clueList = DP.child(wrap, 'div', 'crossword-clues');
     ['across','down'].forEach(dir => {
       const group = clues.filter(c => (c.direction || 'across') === dir);
@@ -115,11 +152,23 @@
     const status = DP.child(wrap, 'div', 'dtp-status', '');
     function check(keys) { let right = 0; keys.forEach(key => { const inp = inputs[key]; if (!inp) return; inp.classList.remove('correct','absent'); const ok = inp.value.toUpperCase() === inp.dataset.answer; if (ok) right++; inp.classList.add(ok ? 'correct' : 'absent'); }); return right; }
     function reveal(keys) { keys.forEach(key => { const inp = inputs[key]; if (!inp) return; inp.value = inp.dataset.answer; inp.classList.remove('absent'); inp.classList.add('correct'); }); }
-    const activeKeys = () => activeClue ? activeClue.cells.map(([r,c]) => `${r},${c}`) : [];
+    const activeKeys = () => activeClue ? clueKeys(activeClue) : [];
     checkWord.addEventListener('click', () => { const keys = activeKeys(); status.textContent = `${check(keys)}/${keys.length} in current word.`; });
     checkPuzzle.addEventListener('click', () => { const keys = Object.keys(inputs); status.textContent = `${check(keys)}/${keys.length} squares correct.`; });
     revealWord.addEventListener('click', () => reveal(activeKeys()));
     revealPuzzle.addEventListener('click', () => { reveal(Object.keys(inputs)); status.textContent = 'Puzzle revealed.'; });
     setActive(clues[0]);
+  }
+  DP.renderCrossword = function(parent, pz) {
+    const wrap = DP.child(parent, 'div', 'dtp-wrap crossword-play');
+    const inline = pz.crossword || (pz.grid || pz.clues ? pz : null);
+    const slug = pz.crossword_slug || pz.replacement_slug || pz.slug;
+    if (inline && (inline.grid || inline.clues || inline.across || inline.down)) return renderCrosswordBoard(wrap, inline, pz);
+    if (!slug) { DP.child(wrap, 'div', 'dp-gameday-empty', 'Crossword data pending.'); return; }
+    DP.child(wrap, 'p', 'dtp-small', `Loading archived crossword: ${slug}`);
+    fetch(crosswordUrl(slug), { cache: 'no-cache' })
+      .then(res => { if (!res.ok) throw new Error(`${res.status} ${res.statusText}`); return res.json(); })
+      .then(data => { wrap.replaceChildren(); renderCrosswordBoard(wrap, data, pz); })
+      .catch(err => { wrap.replaceChildren(); DP.child(wrap, 'div', 'dp-gameday-empty', `Crossword source failed to load for ${slug}: ${err.message}`); });
   };
 })();
