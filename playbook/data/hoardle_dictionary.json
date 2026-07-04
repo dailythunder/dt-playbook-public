@@ -1,0 +1,14 @@
+{
+  "schema_version": "hoardle_dictionary_public.v1",
+  "dictionary_id": "hoardle_okc_nba_universal_v1",
+  "generated_at": "2026-07-04T00:00:00Z",
+  "source": "archive/event_registry/reviewed/word_game_clue_bank.json",
+  "words": [
+    {"word": "DRAFT", "word_category": "universal_hoops", "accepted_answers": ["DRAFT"], "tags": ["HOARDLE", "UNIVERSAL_HOOPS", "NBA"], "source_entry_id": "wg_draft"},
+    {"word": "RINGS", "word_category": "universal_hoops", "accepted_answers": ["RINGS"], "tags": ["HOARDLE", "UNIVERSAL_HOOPS", "CHAMPIONSHIP"], "source_entry_id": "wg_rings"},
+    {"word": "TOPIC", "word_category": "specific_team", "accepted_answers": ["TOPIC"], "tags": ["HOARDLE", "THUNDER", "PLAYER"], "source_entry_id": "wg_topic"},
+    {"word": "IHART", "word_category": "specific_team", "accepted_answers": ["IHART"], "tags": ["HOARDLE", "THUNDER", "PLAYER", "NICKNAME"], "source_entry_id": "wg_ihart"},
+    {"word": "JALEN", "word_category": "specific_team", "accepted_answers": ["JALEN"], "tags": ["HOARDLE", "THUNDER", "PLAYER", "FIRST_NAME"], "source_entry_id": "wg_jalen"},
+    {"word": "CASON", "word_category": "specific_team", "accepted_answers": ["CASON"], "tags": ["HOARDLE", "THUNDER", "PLAYER", "FIRST_NAME"], "source_entry_id": "wg_cason"}
+  ]
+}
