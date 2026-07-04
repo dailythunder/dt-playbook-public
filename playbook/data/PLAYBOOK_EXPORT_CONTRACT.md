@@ -26,6 +26,15 @@ playbook/data/hoardle_dictionary.json
 playbook/data/crosswords/<slug>.json
 ```
 
+Hoardle dictionary:
+
+```text
+solution_pool_52 = candidate answer set
+valid_guesses = accepted five-letter index
+public JS never owns the dictionary
+current v3 public export contains 396 valid guesses
+```
+
 ShaiSweeper launch standard:
 
 ```text
