@@ -131,7 +131,18 @@
     const grid = DP.child(wrap, 'div', 'crossword-grid');
     const rows = gridData.length, cols = gridData[0].length;
     grid.style.gridTemplateColumns = `repeat(${cols}, 2.25rem)`;
-    const starts = new Map(); clues.forEach(clue => { const first = clue.cells?.[0]; if (first) starts.set(`${first[0]},${first[1]}`, clue.number); });
+    const starts = new Map();
+    const cluesByKey = new Map();
+    function clueKeys(clue) { return (clue?.cells || []).map(([r,c]) => `${r},${c}`); }
+    clues.forEach(clue => {
+      const first = clue.cells?.[0];
+      if (first) starts.set(`${first[0]},${first[1]}`, clue.number);
+      clueKeys(clue).forEach(key => {
+        const list = cluesByKey.get(key) || [];
+        list.push(clue);
+        cluesByKey.set(key, list);
+      });
+    });
     const inputs = {}, cellsByKey = {};
     for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
       const ch = gridData[r][c], key = `${r},${c}`;
@@ -143,9 +154,30 @@
       inputs[key] = inp; cellsByKey[key] = cell;
     }
     let activeClue = clues[0];
-    function clueKeys(clue) { return (clue?.cells || []).map(([r,c]) => `${r},${c}`); }
-    function setActive(clue, focus = true) { activeClue = clue; Object.values(cellsByKey).forEach(c => c.classList.remove('active-word')); clueKeys(clue).forEach(key => cellsByKey[key]?.classList.add('active-word')); const first = clue?.cells?.[0]; if (focus && first) inputs[`${first[0]},${first[1]}`]?.focus(); }
-    function activeForKey(key) { return clues.find(clue => clueKeys(clue).includes(key)); }
+    let activeDirection = (activeClue?.direction || 'across').toLowerCase();
+    function setActive(clue, focus = true, focusKey = null) {
+      if (!clue) return;
+      activeClue = clue;
+      activeDirection = String(clue.direction || activeDirection || 'across').toLowerCase();
+      Object.values(cellsByKey).forEach(c => c.classList.remove('active-word'));
+      clueKeys(clue).forEach(key => cellsByKey[key]?.classList.add('active-word'));
+      const first = clue?.cells?.[0];
+      const targetKey = focusKey || (first ? `${first[0]},${first[1]}` : null);
+      if (focus && targetKey) inputs[targetKey]?.focus();
+    }
+    function choicesForKey(key) { return cluesByKey.get(key) || []; }
+    function clueForKey(key) {
+      const choices = choicesForKey(key);
+      if (!choices.length) return null;
+      if (activeClue && clueKeys(activeClue).includes(key)) return activeClue;
+      return choices.find(c => String(c.direction || '').toLowerCase() === activeDirection) || choices[0];
+    }
+    function toggleClueAtKey(key) {
+      const choices = choicesForKey(key);
+      if (choices.length <= 1) return choices[0] || null;
+      const idx = choices.indexOf(activeClue);
+      return choices[(idx + 1 + choices.length) % choices.length];
+    }
     function moveFrom(inp, dr, dc) {
       const [r, c] = inp.dataset.key.split(',').map(Number);
       let nr = r + dr, nc = c + dc;
@@ -156,8 +188,15 @@
       }
     }
     Object.values(inputs).forEach(inp => {
-      inp.addEventListener('focus', () => { const clue = activeForKey(inp.dataset.key); if (clue) setActive(clue, false); });
-      inp.addEventListener('input', () => { inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, '').slice(-1); if (!activeClue || !inp.value) return; const keys = clueKeys(activeClue); const i = keys.indexOf(inp.dataset.key); if (i >= 0 && i < keys.length - 1) inputs[keys[i + 1]]?.focus(); });
+      inp.addEventListener('focus', () => { const clue = clueForKey(inp.dataset.key); if (clue) setActive(clue, false); });
+      inp.addEventListener('click', () => { const clue = toggleClueAtKey(inp.dataset.key); if (clue) setActive(clue, false); });
+      inp.addEventListener('input', () => {
+        inp.value = inp.value.toUpperCase().replace(/[^A-Z]/g, '').slice(-1);
+        if (!activeClue || !inp.value) return;
+        const keys = clueKeys(activeClue);
+        const i = keys.indexOf(inp.dataset.key);
+        if (i >= 0 && i < keys.length - 1) inputs[keys[i + 1]]?.focus();
+      });
       inp.addEventListener('keydown', ev => {
         if (ev.key === 'ArrowRight') { ev.preventDefault(); moveFrom(inp, 0, 1); }
         if (ev.key === 'ArrowLeft') { ev.preventDefault(); moveFrom(inp, 0, -1); }
