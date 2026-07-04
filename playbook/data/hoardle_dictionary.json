@@ -1,14 +1,10 @@
 {
-  "schema_version": "hoardle_dictionary_public.v1",
+  "schema_version": "hoardle_dictionary_public.v2",
   "dictionary_id": "hoardle_okc_nba_universal_v1",
   "generated_at": "2026-07-04T00:00:00Z",
-  "source": "archive/event_registry/reviewed/word_game_clue_bank.json",
-  "words": [
-    {"word": "DRAFT", "word_category": "universal_hoops", "accepted_answers": ["DRAFT"], "tags": ["HOARDLE", "UNIVERSAL_HOOPS", "NBA"], "source_entry_id": "wg_draft"},
-    {"word": "RINGS", "word_category": "universal_hoops", "accepted_answers": ["RINGS"], "tags": ["HOARDLE", "UNIVERSAL_HOOPS", "CHAMPIONSHIP"], "source_entry_id": "wg_rings"},
-    {"word": "TOPIC", "word_category": "specific_team", "accepted_answers": ["TOPIC"], "tags": ["HOARDLE", "THUNDER", "PLAYER"], "source_entry_id": "wg_topic"},
-    {"word": "IHART", "word_category": "specific_team", "accepted_answers": ["IHART"], "tags": ["HOARDLE", "THUNDER", "PLAYER", "NICKNAME"], "source_entry_id": "wg_ihart"},
-    {"word": "JALEN", "word_category": "specific_team", "accepted_answers": ["JALEN"], "tags": ["HOARDLE", "THUNDER", "PLAYER", "FIRST_NAME"], "source_entry_id": "wg_jalen"},
-    {"word": "CASON", "word_category": "specific_team", "accepted_answers": ["CASON"], "tags": ["HOARDLE", "THUNDER", "PLAYER", "FIRST_NAME"], "source_entry_id": "wg_cason"}
-  ]
+  "source": "archive/event_registry/reviewed/hoardle_dictionary.json",
+  "target_solution_count": 52,
+  "solution_pool_status": "candidate_for_editor_review",
+  "solution_pool_52": ["DRAFT", "RINGS", "TOPIC", "IHART", "JALEN", "CASON", "BENCH", "COACH", "DRIVE", "ELBOW", "BULLS", "BACKS", "FIVES", "FLASH", "BISON", "ADAMS", "ALLEN", "BAKER", "BARRY", "BEARD", "BROWN", "CLARK", "DAVIS", "DIENG", "ELLIS", "EVANS", "EWING", "FELIX", "FORTE", "GIBBS", "GOMES", "GRANT", "GREEN", "HAYES", "IBAKA", "JAMES", "JONES", "LEWIS", "LUCAS", "MASON", "MCCOY", "MCKEY", "MOORE", "NADER", "NOVAK", "OLLIE", "OWENS", "PAYNE", "PETRO", "SMITH", "WHITE", "YOUNG"],
+  "valid_guesses": ["DRAFT", "RINGS", "TOPIC", "IHART", "JALEN", "CASON", "BENCH", "COACH", "DRIVE", "ELBOW", "BULLS", "BACKS", "FIVES", "FLASH", "BISON", "ADAMS", "ALLEN", "BAKER", "BARRY", "BEARD", "BROWN", "CLARK", "DAVIS", "DIENG", "ELLIS", "EVANS", "EWING", "FELIX", "FORTE", "GIBBS", "GOMES", "GRANT", "GREEN", "HAYES", "IBAKA", "JAMES", "JONES", "LEWIS", "LUCAS", "MASON", "MCCOY", "MCKEY", "MOORE", "NADER", "NOVAK", "OLLIE", "OWENS", "PAYNE", "PETRO", "SMITH", "WHITE", "YOUNG"]
 }
