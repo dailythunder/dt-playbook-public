@@ -7,11 +7,14 @@
   function hoardleDictionaryUrl() { return new URL('hoardle_dictionary.json', DATA_BASE).href; }
   function collectDictionaryWords(data) {
     const out = new Set();
+    function addWord(value) { const word = String(value || '').toUpperCase(); if (/^[A-Z]{5}$/.test(word)) out.add(word); }
+    (data?.solution_pool_52 || []).forEach(addWord);
+    (data?.valid_guesses || []).forEach(addWord);
     const rows = Array.isArray(data?.words) ? data.words : Array.isArray(data?.entries) ? data.entries : [];
     rows.forEach(row => {
-      const word = String(row.word || row.answer || row.canonical_text || '').toUpperCase();
-      if (/^[A-Z]{5}$/.test(word)) out.add(word);
-      (row.accepted_answers || []).forEach(x => { const a = String(x).toUpperCase(); if (/^[A-Z]{5}$/.test(a)) out.add(a); });
+      if (typeof row === 'string') { addWord(row); return; }
+      addWord(row.word || row.answer || row.canonical_text);
+      (row.accepted_answers || []).forEach(addWord);
     });
     return out;
   }
