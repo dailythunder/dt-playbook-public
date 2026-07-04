@@ -11,11 +11,12 @@
     }
     return { away, home };
   }
+  function normCompact(value) { return DP.norm(value).replace(/\s+/g, ''); }
   function matchesAnswer(choice, answer) {
-    const c = DP.norm(choice).replace(/\s+/g, '');
+    const c = normCompact(choice);
     const answers = Array.isArray(answer) ? answer : [answer];
     return answers.some(a => {
-      const n = DP.norm(a).replace(/\s+/g, '');
+      const n = normCompact(a);
       return !!c && !!n && (c.includes(n) || n.includes(c) || (n === 'thunder' && c.includes('oklahomacity')));
     });
   }
@@ -27,16 +28,85 @@
     return '16+';
   }
   function answerText(value) { return DP.listText(value); }
+  function flattenNames(value) {
+    const out = [];
+    function add(item) {
+      if (!item) return;
+      if (Array.isArray(item)) return item.forEach(add);
+      if (typeof item === 'object') {
+        add(item.name || item.display_name || item.player || item.full_name || item.label);
+        add(item.aliases || item.nicknames);
+        return;
+      }
+      String(item).split('|').forEach(part => { const name = part.trim(); if (name) out.push(name); });
+    }
+    add(value);
+    return out;
+  }
+  function fallbackPlayerPool(lookback, game) {
+    const marker = `${lookback?.event_id || ''} ${game?.matchup || ''} ${game?.game_date || ''}`.toLowerCase();
+    if (marker.includes('2012') && marker.includes('miami') && (marker.includes('oklahoma') || marker.includes('okc') || marker.includes('thunder'))) {
+      return [
+        'Kevin Durant', 'Derek Fisher', 'Derrick Fisher', 'Russell Westbrook', 'James Harden', 'Serge Ibaka',
+        'Kendrick Perkins', 'Nick Collison', 'Thabo Sefolosha', 'Daequan Cook', 'Nazr Mohammed', 'Royal Ivey',
+        'LeBron James', 'Dwyane Wade', 'Chris Bosh', 'Mario Chalmers', 'Shane Battier', 'Udonis Haslem',
+        'Mike Miller', 'Norris Cole', 'Joel Anthony', 'James Jones'
+      ];
+    }
+    return [];
+  }
+  function playerPoolFor(lookback, game) {
+    const raw = [
+      lookback?.player_options,
+      lookback?.eligible_players,
+      lookback?.board?.player_options,
+      lookback?.board?.eligible_players,
+      game?.player_options,
+      game?.eligible_players,
+      fallbackPlayerPool(lookback, game),
+      game?.game_high_points,
+      game?.okc_rebounds_leader,
+      game?.okc_assists_leader
+    ].flatMap(flattenNames);
+    const seen = new Set();
+    return raw.filter(name => {
+      const key = normCompact(name);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+  function playerMatches(query, pool) {
+    const q = DP.norm(query).trim();
+    const qc = q.replace(/\s+/g, '');
+    if (!qc) return [];
+    return pool.filter(name => {
+      const n = DP.norm(name).trim();
+      const nc = n.replace(/\s+/g, '');
+      const parts = n.split(/\s+/).filter(Boolean);
+      return nc.startsWith(qc) || nc.includes(qc) || parts.some(part => part.startsWith(qc));
+    });
+  }
+  function cueText(query, pool) {
+    const value = String(query || '').trim();
+    if (!value) return 'Start typing for a player cue.';
+    const matches = playerMatches(value, pool);
+    if (!matches.length) return 'No eligible player match yet.';
+    const shown = matches.slice(0, 4).join(', ');
+    if (matches.length === 1) return `Looks like ${shown}.`;
+    return `Could be: ${shown}${matches.length > 4 ? `, +${matches.length - 4} more` : ''}.`;
+  }
   DP.renderLookback = function(parent, lookback) {
     if (!lookback || !lookback.game) return;
     const game = lookback.game;
     const teams = parseTeams(game);
+    const eligiblePlayers = playerPoolFor(lookback, game);
     const look = DP.child(parent, 'section', 'card lookback-card');
     DP.child(look, 'div', 'dp-eyebrow', 'On This Day');
     DP.child(look, 'h2', 'dp-panel-title', game.matchup || 'Thunder lookback');
     DP.child(look, 'p', 'date', `${game.game_date || ''} · final score hidden until reveal`.trim());
     const quiz = DP.child(look, 'div', 'scoreboard-trivia button-trivia');
-    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range. Player fields respond as you type.');
+    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range. Player fields narrow toward eligible players as you type.');
     const state = { winner: '', margin: '', players: {} };
     function question(label, className) {
       const box = DP.child(quiz, 'div', `trivia-card ${className || ''}`);
@@ -76,6 +146,8 @@
     DP.child(playerQ, 'div', 'trivia-label', 'Player leaders');
     if (!playerFields.length) {
       DP.child(playerQ, 'p', 'trivia-note', 'Player leader data is not attached for this game. Reveal shows the available scoreboard card.');
+    } else if (!eligiblePlayers.length) {
+      DP.child(playerQ, 'p', 'trivia-note', 'No player index is attached yet; check still uses the answer fields.');
     }
     const playerResults = {};
     playerFields.forEach(([key, label]) => {
@@ -83,15 +155,12 @@
       DP.child(row, 'span', '', label);
       const input = DP.child(row, 'input', 'trivia-text-input');
       input.type = 'text'; input.autocomplete = 'off'; input.placeholder = 'Type a player name';
-      const result = DP.child(playerQ, 'div', 'trivia-result live', 'Start typing for feedback.');
+      const result = DP.child(playerQ, 'div', 'trivia-result live', 'Start typing for a player cue.');
       playerResults[key] = result;
       input.addEventListener('input', () => {
         state.players[key] = input.value;
-        const value = input.value.trim();
-        if (!value) { result.textContent = 'Start typing for feedback.'; result.className = 'trivia-result live'; return; }
-        const ok = matchesAnswer(value, game[key]);
-        result.textContent = ok ? 'Match found.' : 'No match yet.';
-        result.className = `trivia-result live ${ok ? 'correct' : 'incorrect'}`;
+        result.textContent = eligiblePlayers.length ? cueText(input.value, eligiblePlayers) : 'Type a guess, then check.';
+        result.className = 'trivia-result live';
       });
     });
     const controls = DP.child(quiz, 'div', 'dtp-controls');
@@ -107,10 +176,12 @@
       marginQ.result.className = `trivia-result ${marginOk ? 'correct' : 'incorrect'}`;
       let playerOk = 0;
       playerFields.forEach(([key]) => {
-        const ok = matchesAnswer(state.players[key] || '', game[key]);
+        const guess = state.players[key] || '';
+        const ok = matchesAnswer(guess, game[key]);
+        const eligible = !guess.trim() ? false : playerMatches(guess, eligiblePlayers).length > 0;
         if (ok) playerOk++;
         if (playerResults[key]) {
-          playerResults[key].textContent = ok ? 'Correct' : `Answer: ${answerText(game[key])}`;
+          playerResults[key].textContent = ok ? 'Correct' : eligible ? `Eligible player, wrong answer. Answer: ${answerText(game[key])}` : `Answer: ${answerText(game[key])}`;
           playerResults[key].className = `trivia-result ${ok ? 'correct' : 'incorrect'}`;
         }
       });
