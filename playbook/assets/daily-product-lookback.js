@@ -3,18 +3,7 @@
   const ASSET_BASE = document.currentScript?.src ? new URL('.', document.currentScript.src) : new URL('./assets/', location.href);
   const DATA_BASE = new URL('../data/', ASSET_BASE);
   let playerIndexPromise = null;
-  const INLINE_PLAYER_INDEX = [
-    { display_name: 'Kevin Durant', aliases: ['Durant', 'KD'] },
-    { display_name: 'Derrick Fisher', aliases: ['Fisher', 'D-Fish'] },
-    { display_name: 'Shai Gilgeous-Alexander', aliases: ['Shai', 'SGA', 'Gilgeous-Alexander'] },
-    { display_name: 'Chet Holmgren', aliases: ['Chet', 'Holmgren'] },
-    { display_name: 'Isaiah Hartenstein', aliases: ['Hartenstein', 'iHart'] },
-    { display_name: 'Jalen Williams', aliases: ['Jalen', 'JDub'] },
-    { display_name: 'James Harden', aliases: ['Harden', 'The Beard'] },
-    { display_name: 'Russell Westbrook', aliases: ['Westbrook', 'Russ', 'Brodie'] },
-    { display_name: 'Kendrick Perkins', aliases: ['Perkins', 'Perk'] },
-    { display_name: 'LeBron James', aliases: ['LeBron', 'James'] }
-  ];
+
   function parseTeams(game) {
     let away = game.away_team || '';
     let home = game.home_team || '';
@@ -53,7 +42,34 @@
     }
     return playerIndexPromise;
   }
-  function playerRecord(name, source = 'game') {
+  function addName(names, value) {
+    const clean = String(value || '').trim();
+    if (clean) names.push(clean);
+  }
+  function collectPlayersFromRows(value) {
+    const out = [];
+    function add(row, source = 'box_score') {
+      if (!row) return;
+      if (typeof row === 'string') { addName(out, row); return; }
+      if (typeof row !== 'object') return;
+      addName(out, row.display_name || row.player_name || row.athlete_display_name || row.player || row.name);
+    }
+    function walk(obj) {
+      if (!obj) return;
+      if (typeof obj === 'string') { add(obj); return; }
+      if (Array.isArray(obj)) { obj.forEach(walk); return; }
+      if (typeof obj !== 'object') return;
+      if (obj.display_name || obj.player_name || obj.athlete_display_name || obj.player || obj.name) add(obj);
+      Object.keys(obj).forEach(key => {
+        if (['source','source_evidence','private_notes','raw_html','html','body'].includes(key)) return;
+        const val = obj[key];
+        if (Array.isArray(val) || (val && typeof val === 'object')) walk(val);
+      });
+    }
+    walk(value);
+    return out;
+  }
+  function playerRecord(name, source = 'box_score') {
     return { display_name: String(name || '').trim(), aliases: [], source };
   }
   function mergePlayers(...lists) {
@@ -65,21 +81,20 @@
       const key = normCompact(display);
       if (seen.has(key)) return;
       seen.add(key);
-      out.push({ display_name: display, aliases: row.aliases || [], source: row.source || 'index' });
+      out.push({ display_name: display, aliases: row.aliases || [], source: row.source || 'box_score' });
     });
     return out;
   }
   function gamePlayerPool(game) {
-    return [
-      ...(game.game_high_points || []),
-      ...(game.okc_rebounds_leader || []),
-      ...(game.okc_assists_leader || []),
-      ...(game.player_options || []),
-      ...(game.eligible_players || [])
-    ].map(name => playerRecord(name));
-  }
-  function hasSpecificPlayerPool(game) {
-    return (Array.isArray(game.eligible_players) && game.eligible_players.length) || (Array.isArray(game.player_options) && game.player_options.length);
+    const boxScoreNames = [];
+    [
+      game.eligible_players,
+      game.player_options,
+      game.player_boxscores,
+      game.box_score,
+      game.players
+    ].forEach(source => boxScoreNames.push(...collectPlayersFromRows(source)));
+    return mergePlayers(boxScoreNames.map(name => playerRecord(name, 'box_score')));
   }
   function variantsForPlayer(player) {
     const names = new Set();
@@ -92,29 +107,42 @@
     });
     return [...names].map(normCompact).filter(Boolean);
   }
+  function enrichEligiblePlayers(pool, indexRows) {
+    if (!Array.isArray(indexRows) || !indexRows.length) return pool;
+    return pool.map(player => {
+      const playerKeys = new Set(variantsForPlayer(player));
+      const hit = indexRows.find(row => {
+        const candidate = { display_name: row.display_name || row.name || '', aliases: row.aliases || [] };
+        return variantsForPlayer(candidate).some(key => playerKeys.has(key));
+      });
+      if (!hit) return player;
+      const aliases = Array.from(new Set([...(player.aliases || []), ...(hit.aliases || [])]));
+      return { ...player, aliases };
+    });
+  }
   function matchingPlayers(query, pool) {
     const q = normCompact(query);
     if (!q) return [];
     return pool.filter(player => variantsForPlayer(player).some(v => v.startsWith(q) || v.includes(q))).slice(0, 8);
   }
-  function cueText(query, matches) {
-    if (!query.trim()) return 'Start typing for hints.';
-    if (!matches.length) return 'No eligible player yet.';
+  function cueText(query, matches, poolSize) {
+    if (!poolSize) return 'Box score player pool missing for this game.';
+    if (!query.trim()) return 'Start typing for box score player hints.';
+    if (!matches.length) return 'No player from this box score yet.';
     if (matches.length === 1) return `Looks like ${matches[0].display_name}.`;
-    return `${matches.length} eligible matches. Keep typing or pick below.`;
+    return `${matches.length} box score matches. Keep typing or pick below.`;
   }
   DP.renderLookback = function(parent, lookback) {
     if (!lookback || !lookback.game) return;
     const game = lookback.game;
     const teams = parseTeams(game);
-    const specificPool = hasSpecificPlayerPool(game);
-    let eligiblePlayers = mergePlayers(gamePlayerPool(game), specificPool ? [] : INLINE_PLAYER_INDEX);
+    let eligiblePlayers = gamePlayerPool(game);
     const look = DP.child(parent, 'section', 'card lookback-card');
     DP.child(look, 'div', 'dp-eyebrow', 'On This Day');
     DP.child(look, 'h2', 'dp-panel-title', game.matchup || 'Thunder lookback');
     DP.child(look, 'p', 'date', `${game.game_date || ''} · final score hidden until reveal`.trim());
     const quiz = DP.child(look, 'div', 'scoreboard-trivia button-trivia');
-    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range. Player fields hint matchup names as you type.');
+    const status = DP.child(quiz, 'div', 'dtp-status', eligiblePlayers.length ? 'Pick the winner and margin range. Player fields hint names from this game’s box score only.' : 'Pick the winner and margin range. Player hints need a box score player pool.');
     const state = { winner: '', margin: '', players: {} };
     function question(label, className) {
       const box = DP.child(quiz, 'div', `trivia-card ${className || ''}`);
@@ -160,7 +188,7 @@
     function renderSuggest(input, menu, result, key) {
       const value = input.value.trim();
       const matches = matchingPlayers(value, eligiblePlayers);
-      result.textContent = cueText(value, matches);
+      result.textContent = cueText(value, matches, eligiblePlayers.length);
       result.className = `trivia-result live ${matches.length === 1 ? 'correct' : matches.length ? '' : 'incorrect'}`;
       menu.replaceChildren();
       if (!value || !matches.length || document.activeElement !== input) { menu.classList.remove('open'); return; }
@@ -186,9 +214,10 @@
       DP.child(row, 'span', '', label);
       const combo = DP.child(row, 'span', 'trivia-combo');
       const input = DP.child(combo, 'input', 'trivia-text-input');
-      input.type = 'text'; input.autocomplete = 'off'; input.placeholder = 'Type a player name';
+      input.type = 'text'; input.autocomplete = 'off'; input.placeholder = eligiblePlayers.length ? 'Type a player name' : 'Box score pool missing';
+      input.disabled = !eligiblePlayers.length;
       const menu = DP.child(combo, 'div', 'trivia-suggest-menu');
-      const result = DP.child(playerQ, 'div', 'trivia-result live', 'Start typing for hints.');
+      const result = DP.child(playerQ, 'div', 'trivia-result live', cueText('', [], eligiblePlayers.length));
       playerResults[key] = result;
       playerInputs.push({ input, menu, result, key });
       input.addEventListener('input', () => {
@@ -199,7 +228,7 @@
       input.addEventListener('blur', () => setTimeout(() => menu.classList.remove('open'), 140));
     });
     loadPlayerIndex().then(players => {
-      eligiblePlayers = mergePlayers(gamePlayerPool(game), specificPool ? [] : players, specificPool ? [] : INLINE_PLAYER_INDEX);
+      eligiblePlayers = enrichEligiblePlayers(eligiblePlayers, players);
       playerInputs.forEach(({ input, menu, result, key }) => renderSuggest(input, menu, result, key));
     });
     const controls = DP.child(quiz, 'div', 'dtp-controls');
@@ -220,7 +249,7 @@
         const eligible = matchingPlayers(typed, eligiblePlayers).length > 0;
         if (ok) playerOk++;
         if (playerResults[key]) {
-          playerResults[key].textContent = ok ? 'Correct' : eligible ? `Good name, wrong leader. Answer: ${answerText(game[key])}` : `Not in this game pool. Answer: ${answerText(game[key])}`;
+          playerResults[key].textContent = ok ? 'Correct' : eligible ? `Good box score name, wrong leader. Answer: ${answerText(game[key])}` : `Not in this game’s box score pool. Answer: ${answerText(game[key])}`;
           playerResults[key].className = `trivia-result ${ok ? 'correct' : 'incorrect'}`;
         }
       });
