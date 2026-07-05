@@ -36,138 +36,18 @@
       "fgm_bombs": 11,
       "ftm_bombs": 0,
       "three_point_bombs": 0,
-      "fg_cell_ids": [
-        "E4",
-        "F4",
-        "G4",
-        "F6",
-        "H6",
-        "E7",
-        "F7",
-        "E8",
-        "F8",
-        "A9",
-        "F9"
-      ],
-      "cell_ids": [
-        "E4",
-        "F4",
-        "G4",
-        "F6",
-        "H6",
-        "E7",
-        "F7",
-        "E8",
-        "F8",
-        "A9",
-        "F9"
-      ],
-      "mine_cells": [
-        [
-          3,
-          4
-        ],
-        [
-          3,
-          5
-        ],
-        [
-          3,
-          6
-        ],
-        [
-          5,
-          5
-        ],
-        [
-          5,
-          7
-        ],
-        [
-          6,
-          4
-        ],
-        [
-          6,
-          5
-        ],
-        [
-          7,
-          4
-        ],
-        [
-          7,
-          5
-        ],
-        [
-          8,
-          0
-        ],
-        [
-          8,
-          5
-        ]
-      ],
-      "fg_mine_cells": [
-        [
-          3,
-          4
-        ],
-        [
-          3,
-          5
-        ],
-        [
-          3,
-          6
-        ],
-        [
-          5,
-          5
-        ],
-        [
-          5,
-          7
-        ],
-        [
-          6,
-          4
-        ],
-        [
-          6,
-          5
-        ],
-        [
-          7,
-          4
-        ],
-        [
-          7,
-          5
-        ],
-        [
-          8,
-          0
-        ],
-        [
-          8,
-          5
-        ]
-      ],
-      "public_clues": [
-        "FGM: 11",
-        "3PM: 1"
-      ],
+      "fg_cell_ids": ["E4","F4","G4","F6","H6","E7","F7","E8","F8","A9","F9"],
+      "cell_ids": ["E4","F4","G4","F6","H6","E7","F7","E8","F8","A9","F9"],
+      "mine_cells": [[3,4],[3,5],[3,6],[5,5],[5,7],[6,4],[6,5],[7,4],[7,5],[8,0],[8,5]],
+      "fg_mine_cells": [[3,4],[3,5],[3,6],[5,5],[5,7],[6,4],[6,5],[7,4],[7,5],[8,0],[8,5]],
+      "public_clues": ["FGM: 11","3PM: 1"],
       "free_throw_policy": "standard launch excludes FTs",
       "shot_fit_status": "accepted_standard_9x12",
       "fit_policy": "standard_9x12_v4_editor_approved",
       "difficulty": "standard",
       "foreground_clue": "Shai tied up the 2025 Finals, 2 points at a time.",
       "hint_button_title": "Need a hint?",
-      "hint_lines": [
-        "FGM: 11",
-        "3PM: 1"
-      ],
+      "hint_lines": ["FGM: 11","3PM: 1"],
       "summary": "True ShaiSweeper board. Bomb count equals Shai made field goals.",
       "guide": "Use the reviewed 9x12 ShaiSweeper grid. Standard launch excludes free throws.",
       "game_id": "0042400402"
@@ -186,29 +66,33 @@
         "scoreboard": "MIA 91, Thunder 85",
         "winner": "Miami Heat",
         "margin": 6,
-        "game_high_points": [
-          "LeBron James"
-        ],
-        "okc_rebounds_leader": [
-          "Kendrick Perkins"
-        ],
-        "okc_assists_leader": [
-          "James Harden"
+        "game_high_points": ["LeBron James"],
+        "okc_rebounds_leader": ["Kendrick Perkins"],
+        "okc_assists_leader": ["James Harden"],
+        "eligible_players": [
+          "LeBron James",
+          "Dwyane Wade",
+          "Chris Bosh",
+          "Mario Chalmers",
+          "Shane Battier",
+          "Udonis Haslem",
+          "Norris Cole",
+          "Mike Miller",
+          "Kevin Durant",
+          "Russell Westbrook",
+          "James Harden",
+          "Serge Ibaka",
+          "Kendrick Perkins",
+          "Derek Fisher",
+          "Thabo Sefolosha",
+          "Nick Collison",
+          "Daequan Cook",
+          "Nazr Mohammed"
         ]
       },
       "board": {
-        "revealed": [
-          "date",
-          "home_team",
-          "away_team"
-        ],
-        "guess_fields": [
-          "winner",
-          "margin",
-          "game_high_points",
-          "okc_rebounds_leader",
-          "okc_assists_leader"
-        ]
+        "revealed": ["date","home_team","away_team"],
+        "guess_fields": ["winner","margin","game_high_points","okc_rebounds_leader","okc_assists_leader"]
       }
     },
     "article": {
