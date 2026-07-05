@@ -133,6 +133,9 @@
     grid.style.gridTemplateColumns = `repeat(${cols}, 2.25rem)`;
     const starts = new Map();
     const cluesByKey = new Map();
+    const acrossClues = clues.filter(c => String(c.direction || 'across').toLowerCase() === 'across');
+    const downClues = clues.filter(c => String(c.direction || 'across').toLowerCase() === 'down');
+    const orderedClues = [...acrossClues, ...downClues];
     function clueKeys(clue) { return (clue?.cells || []).map(([r,c]) => `${r},${c}`); }
     clues.forEach(clue => {
       const first = clue.cells?.[0];
@@ -153,7 +156,7 @@
       inp.maxLength = 1; inp.inputMode = 'text'; inp.autocomplete = 'off'; inp.dataset.answer = String(ch || '').toUpperCase(); inp.dataset.key = key;
       inputs[key] = inp; cellsByKey[key] = cell;
     }
-    let activeClue = clues[0];
+    let activeClue = orderedClues[0] || clues[0];
     let activeDirection = String(activeClue?.direction || 'across').toLowerCase();
     function choicesForKey(key) { return cluesByKey.get(key) || []; }
     function clueForKey(key, preferred = activeDirection) {
@@ -173,6 +176,11 @@
       const first = clue?.cells?.[0];
       const targetKey = focusKey || (first ? `${first[0]},${first[1]}` : null);
       if (focus && targetKey) inputs[targetKey]?.focus();
+    }
+    function nextOrderedClue() {
+      if (!orderedClues.length) return null;
+      const idx = orderedClues.indexOf(activeClue);
+      return orderedClues[(idx + 1 + orderedClues.length) % orderedClues.length];
     }
     function toggleClueAtKey(key) {
       const choices = choicesForKey(key);
@@ -213,16 +221,16 @@
         if (i >= 0 && i < keys.length - 1) inputs[keys[i + 1]]?.focus();
       });
       inp.addEventListener('keydown', ev => {
+        if (ev.key === 'Enter') { ev.preventDefault(); const next = nextOrderedClue(); if (next) setActive(next, true); }
         if (ev.key === 'ArrowRight') { ev.preventDefault(); moveFrom(inp, 0, 1, 'across'); }
         if (ev.key === 'ArrowLeft') { ev.preventDefault(); moveFrom(inp, 0, -1, 'across'); }
         if (ev.key === 'ArrowDown') { ev.preventDefault(); moveFrom(inp, 1, 0, 'down'); }
         if (ev.key === 'ArrowUp') { ev.preventDefault(); moveFrom(inp, -1, 0, 'down'); }
-        if (ev.key === 'Tab' && activeClue) { return; }
       });
     });
     const clueList = DP.child(wrap, 'div', 'crossword-clues');
     ['across','down'].forEach(dir => {
-      const group = clues.filter(c => (c.direction || 'across') === dir);
+      const group = clues.filter(c => String(c.direction || 'across').toLowerCase() === dir);
       if (!group.length) return;
       const box = DP.child(clueList, 'div', 'crossword-clue-group');
       DP.child(box, 'div', 'trivia-label', dir);
@@ -242,7 +250,7 @@
     checkPuzzle.addEventListener('click', () => { const keys = Object.keys(inputs); status.textContent = `${check(keys)}/${keys.length} squares correct.`; });
     revealWord.addEventListener('click', () => reveal(activeKeys()));
     revealPuzzle.addEventListener('click', () => { reveal(Object.keys(inputs)); status.textContent = 'Puzzle revealed.'; });
-    setActive(clues[0]);
+    setActive(orderedClues[0] || clues[0]);
   }
   DP.renderCrossword = function(parent, pz) {
     const wrap = DP.child(parent, 'div', 'dtp-wrap crossword-play');
