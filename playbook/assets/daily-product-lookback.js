@@ -78,6 +78,9 @@
       ...(game.eligible_players || [])
     ].map(name => playerRecord(name));
   }
+  function hasSpecificPlayerPool(game) {
+    return (Array.isArray(game.eligible_players) && game.eligible_players.length) || (Array.isArray(game.player_options) && game.player_options.length);
+  }
   function variantsForPlayer(player) {
     const names = new Set();
     const full = String(player.display_name || '').trim();
@@ -98,21 +101,20 @@
     if (!query.trim()) return 'Start typing for hints.';
     if (!matches.length) return 'No eligible player yet.';
     if (matches.length === 1) return `Looks like ${matches[0].display_name}.`;
-    const shown = matches.slice(0, 4).map(p => p.display_name).join(', ');
-    const more = matches.length > 4 ? `, +${matches.length - 4} more` : '';
-    return `Could be ${shown}${more}.`;
+    return `${matches.length} eligible matches. Keep typing or pick below.`;
   }
   DP.renderLookback = function(parent, lookback) {
     if (!lookback || !lookback.game) return;
     const game = lookback.game;
     const teams = parseTeams(game);
-    let eligiblePlayers = mergePlayers(gamePlayerPool(game), INLINE_PLAYER_INDEX);
+    const specificPool = hasSpecificPlayerPool(game);
+    let eligiblePlayers = mergePlayers(gamePlayerPool(game), specificPool ? [] : INLINE_PLAYER_INDEX);
     const look = DP.child(parent, 'section', 'card lookback-card');
     DP.child(look, 'div', 'dp-eyebrow', 'On This Day');
     DP.child(look, 'h2', 'dp-panel-title', game.matchup || 'Thunder lookback');
     DP.child(look, 'p', 'date', `${game.game_date || ''} · final score hidden until reveal`.trim());
     const quiz = DP.child(look, 'div', 'scoreboard-trivia button-trivia');
-    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range. Player fields hint eligible names as you type.');
+    const status = DP.child(quiz, 'div', 'dtp-status', 'Pick the winner and margin range. Player fields hint matchup names as you type.');
     const state = { winner: '', margin: '', players: {} };
     function question(label, className) {
       const box = DP.child(quiz, 'div', `trivia-card ${className || ''}`);
@@ -155,28 +157,50 @@
     }
     const playerResults = {};
     const playerInputs = [];
-    function updateCue(input, result) {
+    function renderSuggest(input, menu, result, key) {
       const value = input.value.trim();
       const matches = matchingPlayers(value, eligiblePlayers);
       result.textContent = cueText(value, matches);
       result.className = `trivia-result live ${matches.length === 1 ? 'correct' : matches.length ? '' : 'incorrect'}`;
+      menu.replaceChildren();
+      if (!value || !matches.length || document.activeElement !== input) { menu.classList.remove('open'); return; }
+      matches.forEach(player => {
+        const option = DP.child(menu, 'button', 'trivia-suggest-option');
+        option.type = 'button';
+        option.textContent = player.display_name;
+        if (player.aliases?.length) DP.child(option, 'small', '', player.aliases.slice(0, 3).join(' · '));
+        option.addEventListener('mousedown', ev => {
+          ev.preventDefault();
+          input.value = player.display_name;
+          state.players[key] = player.display_name;
+          result.textContent = `Selected ${player.display_name}.`;
+          result.className = 'trivia-result live correct';
+          menu.classList.remove('open');
+          input.focus();
+        });
+      });
+      menu.classList.add('open');
     }
     playerFields.forEach(([key, label]) => {
       const row = DP.child(playerQ, 'label', 'trivia-text-row');
       DP.child(row, 'span', '', label);
-      const input = DP.child(row, 'input', 'trivia-text-input');
+      const combo = DP.child(row, 'span', 'trivia-combo');
+      const input = DP.child(combo, 'input', 'trivia-text-input');
       input.type = 'text'; input.autocomplete = 'off'; input.placeholder = 'Type a player name';
+      const menu = DP.child(combo, 'div', 'trivia-suggest-menu');
       const result = DP.child(playerQ, 'div', 'trivia-result live', 'Start typing for hints.');
       playerResults[key] = result;
-      playerInputs.push({ input, result });
+      playerInputs.push({ input, menu, result, key });
       input.addEventListener('input', () => {
         state.players[key] = input.value;
-        updateCue(input, result);
+        renderSuggest(input, menu, result, key);
       });
+      input.addEventListener('focus', () => renderSuggest(input, menu, result, key));
+      input.addEventListener('blur', () => setTimeout(() => menu.classList.remove('open'), 140));
     });
     loadPlayerIndex().then(players => {
-      eligiblePlayers = mergePlayers(gamePlayerPool(game), players, INLINE_PLAYER_INDEX);
-      playerInputs.forEach(({ input, result }) => updateCue(input, result));
+      eligiblePlayers = mergePlayers(gamePlayerPool(game), specificPool ? [] : players, specificPool ? [] : INLINE_PLAYER_INDEX);
+      playerInputs.forEach(({ input, menu, result, key }) => renderSuggest(input, menu, result, key));
     });
     const controls = DP.child(quiz, 'div', 'dtp-controls');
     const check = DP.child(controls, 'button', 'dtp-btn', 'Check picks');
@@ -196,7 +220,7 @@
         const eligible = matchingPlayers(typed, eligiblePlayers).length > 0;
         if (ok) playerOk++;
         if (playerResults[key]) {
-          playerResults[key].textContent = ok ? 'Correct' : eligible ? `Good name, wrong leader. Answer: ${answerText(game[key])}` : `Not in the eligible player list. Answer: ${answerText(game[key])}`;
+          playerResults[key].textContent = ok ? 'Correct' : eligible ? `Good name, wrong leader. Answer: ${answerText(game[key])}` : `Not in this game pool. Answer: ${answerText(game[key])}`;
           playerResults[key].className = `trivia-result ${ok ? 'correct' : 'incorrect'}`;
         }
       });
