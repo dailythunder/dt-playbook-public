@@ -1,6 +1,6 @@
 (() => {
-  const BUILD = '20260704-crossword-direction-player-hints';
-  const css = ['daily-product-core.css','daily-product-games.css'];
+  const BUILD = '20260704-crossword-enter-trivia-dropdown';
+  const css = ['daily-product-core.css','daily-product-games.css','daily-product-autocomplete.css'];
   const chunks = [
     'daily-product-core.js',
     'daily-product-hoardle-crossword.js',
