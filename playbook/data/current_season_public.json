@@ -1,1 +1,1289 @@
-{"team":"OKC","team_full_name":"Oklahoma City Thunder","season_label":"2025-26","generated_at_utc":"2026-05-10T00:45:11Z","registry_version":1,"status":"public_registry_present","games":[{"game_id":"0042500221","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"home","local_date":"2026-05-05","tipoff_utc":"2026-05-06T00:30Z","status":"final","result":"W","thunder_score":108,"opponent_score":90,"season_phase":"playoffs","series_round":"R2","game_number_in_series":1,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500221","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500221/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500221/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500221"},"library":{"tv":"Peacock","arena":"Paycom Center","location":"Paycom Center"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500221.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500221-thunder-lakers","scoreboard_slug":"scoreboard-0042500221-thunder-lakers","dayafter_slug":"day-after-0042500221-thunder-lakers","pregame_complete":false,"scoreboard_complete":true,"dayafter_complete":true}},{"game_id":"0042500222","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"home","local_date":"2026-05-07","tipoff_utc":"2026-05-08T01:30Z","status":"final","result":"W","thunder_score":125,"opponent_score":107,"season_phase":"playoffs","series_round":"R2","game_number_in_series":2,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500222","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500222/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500222/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500222"},"library":{"tv":"Prime Video","arena":"Paycom Center","location":"Paycom Center"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500222.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500222-thunder-lakers","scoreboard_slug":"scoreboard-0042500222-thunder-lakers","dayafter_slug":"day-after-0042500222-thunder-lakers","pregame_complete":false,"scoreboard_complete":true,"dayafter_complete":true}},{"game_id":"0042500223","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"away","local_date":"2026-05-09","tipoff_utc":"2026-05-10T00:30Z","status":"scheduled","result":null,"thunder_score":0,"opponent_score":0,"season_phase":"playoffs","series_round":"R2","game_number_in_series":3,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500223","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500223/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500223/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500223"},"library":{"tv":"ERADM","arena":"Paycom Center","location":"crypto.com Arena"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500223.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500223-thunder-lakers","scoreboard_slug":"scoreboard-0042500223-thunder-lakers","dayafter_slug":"day-after-0042500223-thunder-lakers","pregame_complete":false,"scoreboard_complete":false,"dayafter_complete":false}},{"game_id":"0042500224","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"away","local_date":"2026-05-11","tipoff_utc":"2026-05-12T02:30Z","status":"scheduled","result":null,"thunder_score":null,"opponent_score":null,"season_phase":"playoffs","series_round":"R2","game_number_in_series":4,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500224","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500224/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500224/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500224"},"library":{"tv":"Prime Video","arena":"Paycom Center","location":"crypto.com Arena"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500224.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500224-thunder-lakers","scoreboard_slug":"scoreboard-0042500224-thunder-lakers","dayafter_slug":"day-after-0042500224-thunder-lakers","pregame_complete":false,"scoreboard_complete":false,"dayafter_complete":false}},{"game_id":"0042500225","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"home","local_date":"2026-05-12","tipoff_utc":"2026-05-13T04:00Z","status":"scheduled","result":null,"thunder_score":null,"opponent_score":null,"season_phase":"playoffs","series_round":"R2","game_number_in_series":5,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500225","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500225/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500225/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500225"},"library":{"tv":"TBD","arena":"Paycom Center","location":"Paycom Center"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500225.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500225-thunder-lakers","scoreboard_slug":"scoreboard-0042500225-thunder-lakers","dayafter_slug":"day-after-0042500225-thunder-lakers","pregame_complete":false,"scoreboard_complete":false,"dayafter_complete":false}},{"game_id":"0042500226","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"away","local_date":"2026-05-15","tipoff_utc":"2026-05-16T04:00Z","status":"scheduled","result":null,"thunder_score":null,"opponent_score":null,"season_phase":"playoffs","series_round":"R2","game_number_in_series":6,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500226","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500226/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500226/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500226"},"library":{"tv":"TBD","arena":"Paycom Center","location":"crypto.com Arena"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500226.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500226-thunder-lakers","scoreboard_slug":"scoreboard-0042500226-thunder-lakers","dayafter_slug":"day-after-0042500226-thunder-lakers","pregame_complete":false,"scoreboard_complete":false,"dayafter_complete":false}},{"game_id":"0042500227","opponent":"Lakers","opponent_full_name":"Los Angeles Lakers","opponent_abbr":"LAL","home_away":"home","local_date":"2026-05-17","tipoff_utc":"2026-05-18T04:00Z","status":"scheduled","result":null,"thunder_score":null,"opponent_score":null,"season_phase":"playoffs","series_round":"R2","game_number_in_series":7,"game_number":null,"links":{"nba_game":"https://www.nba.com/game/lal-vs-okc-0042500227","nba_box":"https://www.nba.com/game/lal-vs-okc-0042500227/box-score","nba_pbp":"https://www.nba.com/game/lal-vs-okc-0042500227/play-by-play","courtsketch":"https://courtsketch.com/live_game/42500227"},"library":{"tv":"TBD","arena":"Paycom Center","location":"Paycom Center"},"assets":{"game_image":"https://storage.ghost.io/c/f2/f9/f2f98597-fc28-4a31-8135-86802fa12f06/content/images/2026/05/0042500227.png","scoreboard_image":null},"automation":{"pregame_slug":"pregame-0042500227-thunder-lakers","scoreboard_slug":"scoreboard-0042500227-thunder-lakers","dayafter_slug":"day-after-0042500227-thunder-lakers","pregame_complete":false,"scoreboard_complete":false,"dayafter_complete":false}}]}
+{
+  "schema_version": 1,
+  "season_label": "2026-27",
+  "season_phase": "regular",
+  "schedule_verified_at_utc": "2026-10-13T14:24:53.805680+00:00",
+  "unassigned_games": 2,
+  "games": [
+    {
+      "game_id": "0022600003",
+      "season_phase": "regular",
+      "local_date": "2026-10-20",
+      "tipoff_utc": "2026-10-21T01:30:00+00:00",
+      "opponent": "Spurs",
+      "opponent_abbr": "SAS",
+      "home_away": "away",
+      "location": "Frost Bank Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600003/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600007",
+      "season_phase": "regular",
+      "local_date": "2026-10-22",
+      "tipoff_utc": "2026-10-23T01:30:00+00:00",
+      "opponent": "Nuggets",
+      "opponent_abbr": "DEN",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600007/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600116",
+      "season_phase": "regular",
+      "local_date": "2026-10-25",
+      "tipoff_utc": "2026-10-25T23:00:00+00:00",
+      "opponent": "Clippers",
+      "opponent_abbr": "LAC",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600116/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600124",
+      "season_phase": "regular",
+      "local_date": "2026-10-26",
+      "tipoff_utc": "2026-10-27T00:00:00+00:00",
+      "opponent": "Suns",
+      "opponent_abbr": "PHX",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600124/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600142",
+      "season_phase": "regular",
+      "local_date": "2026-10-28",
+      "tipoff_utc": "2026-10-29T01:30:00+00:00",
+      "opponent": "Mavericks",
+      "opponent_abbr": "DAL",
+      "home_away": "away",
+      "location": "American Airlines Center",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600142/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600153",
+      "season_phase": "regular",
+      "local_date": "2026-10-31",
+      "tipoff_utc": "2026-11-01T00:30:00+00:00",
+      "opponent": "Rockets",
+      "opponent_abbr": "HOU",
+      "home_away": "away",
+      "location": "Toyota Center",
+      "tv": "NBA TV",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600153/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600158",
+      "season_phase": "regular",
+      "local_date": "2026-11-02",
+      "tipoff_utc": "2026-11-03T00:00:00+00:00",
+      "opponent": "Cavaliers",
+      "opponent_abbr": "CLE",
+      "home_away": "away",
+      "location": "Rocket Arena",
+      "tv": "Peacock / NBC Sports Network",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600158/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600180",
+      "season_phase": "regular",
+      "local_date": "2026-11-04",
+      "tipoff_utc": "2026-11-05T01:00:00+00:00",
+      "opponent": "Cavaliers",
+      "opponent_abbr": "CLE",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600180/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600029",
+      "season_phase": "regular",
+      "local_date": "2026-11-06",
+      "tipoff_utc": "2026-11-07T01:00:00+00:00",
+      "opponent": "Grizzlies",
+      "opponent_abbr": "MEM",
+      "home_away": "away",
+      "location": "FedExForum",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600029/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600192",
+      "season_phase": "regular",
+      "local_date": "2026-11-07",
+      "tipoff_utc": "2026-11-08T01:00:00+00:00",
+      "opponent": "Wizards",
+      "opponent_abbr": "WAS",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600192/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600216",
+      "season_phase": "regular",
+      "local_date": "2026-11-10",
+      "tipoff_utc": "2026-11-11T04:00:00+00:00",
+      "opponent": "Trail Blazers",
+      "opponent_abbr": "POR",
+      "home_away": "away",
+      "location": "Moda Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600216/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600226",
+      "season_phase": "regular",
+      "local_date": "2026-11-11",
+      "tipoff_utc": "2026-11-12T03:00:00+00:00",
+      "opponent": "Trail Blazers",
+      "opponent_abbr": "POR",
+      "home_away": "away",
+      "location": "Moda Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600226/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600042",
+      "season_phase": "regular",
+      "local_date": "2026-11-13",
+      "tipoff_utc": "2026-11-14T03:30:00+00:00",
+      "opponent": "Clippers",
+      "opponent_abbr": "LAC",
+      "home_away": "away",
+      "location": "Intuit Dome",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600042/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600244",
+      "season_phase": "regular",
+      "local_date": "2026-11-15",
+      "tipoff_utc": "2026-11-16T02:00:00+00:00",
+      "opponent": "Kings",
+      "opponent_abbr": "SAC",
+      "home_away": "away",
+      "location": "Golden 1 Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600244/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600265",
+      "season_phase": "regular",
+      "local_date": "2026-11-18",
+      "tipoff_utc": "2026-11-19T01:00:00+00:00",
+      "opponent": "Hawks",
+      "opponent_abbr": "ATL",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600265/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600048",
+      "season_phase": "regular",
+      "local_date": "2026-11-20",
+      "tipoff_utc": "2026-11-21T01:00:00+00:00",
+      "opponent": "Pelicans",
+      "opponent_abbr": "NOP",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600048/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600281",
+      "season_phase": "regular",
+      "local_date": "2026-11-22",
+      "tipoff_utc": "2026-11-22T23:00:00+00:00",
+      "opponent": "Heat",
+      "opponent_abbr": "MIA",
+      "home_away": "away",
+      "location": "Kaseya Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600281/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600289",
+      "season_phase": "regular",
+      "local_date": "2026-11-23",
+      "tipoff_utc": "2026-11-24T00:30:00+00:00",
+      "opponent": "Pacers",
+      "opponent_abbr": "IND",
+      "home_away": "away",
+      "location": "Gainbridge Fieldhouse",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600289/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600058",
+      "season_phase": "regular",
+      "local_date": "2026-11-25",
+      "tipoff_utc": "2026-11-26T00:30:00+00:00",
+      "opponent": "Timberwolves",
+      "opponent_abbr": "MIN",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600058/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600300",
+      "season_phase": "regular",
+      "local_date": "2026-11-28",
+      "tipoff_utc": "2026-11-29T01:00:00+00:00",
+      "opponent": "Bucks",
+      "opponent_abbr": "MIL",
+      "home_away": "away",
+      "location": "Fiserv Forum",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600300/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600314",
+      "season_phase": "regular",
+      "local_date": "2026-11-30",
+      "tipoff_utc": "2026-12-01T00:30:00+00:00",
+      "opponent": "Nets",
+      "opponent_abbr": "BKN",
+      "home_away": "away",
+      "location": "Barclays Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600314/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600333",
+      "season_phase": "regular",
+      "local_date": "2026-12-02",
+      "tipoff_utc": "2026-12-03T01:00:00+00:00",
+      "opponent": "Nets",
+      "opponent_abbr": "BKN",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600333/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600350",
+      "season_phase": "regular",
+      "local_date": "2026-12-13",
+      "tipoff_utc": "2026-12-13T20:30:00+00:00",
+      "opponent": "Raptors",
+      "opponent_abbr": "TOR",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600350/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600378",
+      "season_phase": "regular",
+      "local_date": "2026-12-16",
+      "tipoff_utc": "2026-12-17T01:00:00+00:00",
+      "opponent": "Kings",
+      "opponent_abbr": "SAC",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600378/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600384",
+      "season_phase": "regular",
+      "local_date": "2026-12-18",
+      "tipoff_utc": "2026-12-19T00:00:00+00:00",
+      "opponent": "Hornets",
+      "opponent_abbr": "CHA",
+      "home_away": "away",
+      "location": "Spectrum Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600384/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600405",
+      "season_phase": "regular",
+      "local_date": "2026-12-20",
+      "tipoff_utc": "2026-12-21T00:00:00+00:00",
+      "opponent": "Hawks",
+      "opponent_abbr": "ATL",
+      "home_away": "away",
+      "location": "State Farm Arena",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600405/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600421",
+      "season_phase": "regular",
+      "local_date": "2026-12-22",
+      "tipoff_utc": "2026-12-23T01:00:00+00:00",
+      "opponent": "Pistons",
+      "opponent_abbr": "DET",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600421/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600433",
+      "season_phase": "regular",
+      "local_date": "2026-12-23",
+      "tipoff_utc": "2026-12-24T01:00:00+00:00",
+      "opponent": "Pelicans",
+      "opponent_abbr": "NOP",
+      "home_away": "away",
+      "location": "Smoothie King Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600433/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600013",
+      "season_phase": "regular",
+      "local_date": "2026-12-25",
+      "tipoff_utc": "2026-12-26T01:00:00+00:00",
+      "opponent": "Timberwolves",
+      "opponent_abbr": "MIN",
+      "home_away": "away",
+      "location": "Target Center",
+      "tv": "ABC / ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600013/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600446",
+      "season_phase": "regular",
+      "local_date": "2026-12-27",
+      "tipoff_utc": "2026-12-27T20:30:00+00:00",
+      "opponent": "Rockets",
+      "opponent_abbr": "HOU",
+      "home_away": "away",
+      "location": "Toyota Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600446/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600467",
+      "season_phase": "regular",
+      "local_date": "2026-12-29",
+      "tipoff_utc": "2026-12-30T01:00:00+00:00",
+      "opponent": "Bucks",
+      "opponent_abbr": "MIL",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600467/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600484",
+      "season_phase": "regular",
+      "local_date": "2026-12-31",
+      "tipoff_utc": "2027-01-01T01:00:00+00:00",
+      "opponent": "Heat",
+      "opponent_abbr": "MIA",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600484/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600498",
+      "season_phase": "regular",
+      "local_date": "2027-01-02",
+      "tipoff_utc": "2027-01-03T01:00:00+00:00",
+      "opponent": "Jazz",
+      "opponent_abbr": "UTA",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600498/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600509",
+      "season_phase": "regular",
+      "local_date": "2027-01-03",
+      "tipoff_utc": "2027-01-04T01:00:00+00:00",
+      "opponent": "Kings",
+      "opponent_abbr": "SAC",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600509/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600526",
+      "season_phase": "regular",
+      "local_date": "2027-01-06",
+      "tipoff_utc": "2027-01-07T00:30:00+00:00",
+      "opponent": "76ers",
+      "opponent_abbr": "PHI",
+      "home_away": "away",
+      "location": "Xfinity Mobile Arena",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600526/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600533",
+      "season_phase": "regular",
+      "local_date": "2027-01-07",
+      "tipoff_utc": "2027-01-08T00:00:00+00:00",
+      "opponent": "Wizards",
+      "opponent_abbr": "WAS",
+      "home_away": "away",
+      "location": "Capital One Arena",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600533/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600559",
+      "season_phase": "regular",
+      "local_date": "2027-01-10",
+      "tipoff_utc": "2027-01-10T23:00:00+00:00",
+      "opponent": "Magic",
+      "opponent_abbr": "ORL",
+      "home_away": "away",
+      "location": "Kia Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600559/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600582",
+      "season_phase": "regular",
+      "local_date": "2027-01-13",
+      "tipoff_utc": "2027-01-14T02:30:00+00:00",
+      "opponent": "Rockets",
+      "opponent_abbr": "HOU",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600582/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600597",
+      "season_phase": "regular",
+      "local_date": "2027-01-15",
+      "tipoff_utc": "2027-01-16T01:00:00+00:00",
+      "opponent": "Jazz",
+      "opponent_abbr": "UTA",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "NBA TV",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600597/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600609",
+      "season_phase": "regular",
+      "local_date": "2027-01-17",
+      "tipoff_utc": "2027-01-17T20:30:00+00:00",
+      "opponent": "Trail Blazers",
+      "opponent_abbr": "POR",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600609/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600615",
+      "season_phase": "regular",
+      "local_date": "2027-01-18",
+      "tipoff_utc": "2027-01-19T01:00:00+00:00",
+      "opponent": "Mavericks",
+      "opponent_abbr": "DAL",
+      "home_away": "away",
+      "location": "American Airlines Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600615/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600629",
+      "season_phase": "regular",
+      "local_date": "2027-01-20",
+      "tipoff_utc": "2027-01-21T01:00:00+00:00",
+      "opponent": "Pelicans",
+      "opponent_abbr": "NOP",
+      "home_away": "away",
+      "location": "Smoothie King Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600629/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600643",
+      "season_phase": "regular",
+      "local_date": "2027-01-22",
+      "tipoff_utc": "2027-01-23T01:00:00+00:00",
+      "opponent": "Grizzlies",
+      "opponent_abbr": "MEM",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600643/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600661",
+      "season_phase": "regular",
+      "local_date": "2027-01-24",
+      "tipoff_utc": "2027-01-25T01:30:00+00:00",
+      "opponent": "Warriors",
+      "opponent_abbr": "GSW",
+      "home_away": "away",
+      "location": "Chase Center",
+      "tv": "Peacock / NBC / Telemundo",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600661/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600676",
+      "season_phase": "regular",
+      "local_date": "2027-01-26",
+      "tipoff_utc": "2027-01-27T04:00:00+00:00",
+      "opponent": "Lakers",
+      "opponent_abbr": "LAL",
+      "home_away": "away",
+      "location": "Crypto.com Arena",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600676/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600691",
+      "season_phase": "regular",
+      "local_date": "2027-01-28",
+      "tipoff_utc": "2027-01-29T01:00:00+00:00",
+      "opponent": "Grizzlies",
+      "opponent_abbr": "MEM",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600691/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600701",
+      "season_phase": "regular",
+      "local_date": "2027-01-30",
+      "tipoff_utc": "2027-01-30T20:00:00+00:00",
+      "opponent": "Nuggets",
+      "opponent_abbr": "DEN",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ABC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600701/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600712",
+      "season_phase": "regular",
+      "local_date": "2027-01-31",
+      "tipoff_utc": "2027-01-31T23:00:00+00:00",
+      "opponent": "Bulls",
+      "opponent_abbr": "CHI",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600712/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600728",
+      "season_phase": "regular",
+      "local_date": "2027-02-02",
+      "tipoff_utc": "2027-02-03T02:00:00+00:00",
+      "opponent": "Nuggets",
+      "opponent_abbr": "DEN",
+      "home_away": "away",
+      "location": "Ball Arena",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600728/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600742",
+      "season_phase": "regular",
+      "local_date": "2027-02-04",
+      "tipoff_utc": "2027-02-05T01:00:00+00:00",
+      "opponent": "Bulls",
+      "opponent_abbr": "CHI",
+      "home_away": "away",
+      "location": "United Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600742/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600752",
+      "season_phase": "regular",
+      "local_date": "2027-02-05",
+      "tipoff_utc": "2027-02-06T02:30:00+00:00",
+      "opponent": "Pacers",
+      "opponent_abbr": "IND",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600752/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600768",
+      "season_phase": "regular",
+      "local_date": "2027-02-07",
+      "tipoff_utc": "2027-02-08T02:30:00+00:00",
+      "opponent": "Knicks",
+      "opponent_abbr": "NYK",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600768/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600784",
+      "season_phase": "regular",
+      "local_date": "2027-02-09",
+      "tipoff_utc": "2027-02-10T01:00:00+00:00",
+      "opponent": "Trail Blazers",
+      "opponent_abbr": "POR",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600784/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600800",
+      "season_phase": "regular",
+      "local_date": "2027-02-11",
+      "tipoff_utc": "2027-02-12T02:30:00+00:00",
+      "opponent": "Spurs",
+      "opponent_abbr": "SAS",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600800/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600812",
+      "season_phase": "regular",
+      "local_date": "2027-02-13",
+      "tipoff_utc": "2027-02-13T22:30:00+00:00",
+      "opponent": "76ers",
+      "opponent_abbr": "PHI",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600812/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600825",
+      "season_phase": "regular",
+      "local_date": "2027-02-15",
+      "tipoff_utc": "2027-02-16T01:00:00+00:00",
+      "opponent": "Magic",
+      "opponent_abbr": "ORL",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600825/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600841",
+      "season_phase": "regular",
+      "local_date": "2027-02-17",
+      "tipoff_utc": "2027-02-18T02:30:00+00:00",
+      "opponent": "Celtics",
+      "opponent_abbr": "BOS",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600841/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600853",
+      "season_phase": "regular",
+      "local_date": "2027-02-25",
+      "tipoff_utc": "2027-02-26T00:30:00+00:00",
+      "opponent": "Knicks",
+      "opponent_abbr": "NYK",
+      "home_away": "away",
+      "location": "Madison Square Garden",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600853/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600867",
+      "season_phase": "regular",
+      "local_date": "2027-02-27",
+      "tipoff_utc": "2027-02-27T22:30:00+00:00",
+      "opponent": "Pistons",
+      "opponent_abbr": "DET",
+      "home_away": "away",
+      "location": "Little Caesars Arena",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600867/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600893",
+      "season_phase": "regular",
+      "local_date": "2027-03-02",
+      "tipoff_utc": "2027-03-03T01:00:00+00:00",
+      "opponent": "Timberwolves",
+      "opponent_abbr": "MIN",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600893/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600909",
+      "season_phase": "regular",
+      "local_date": "2027-03-04",
+      "tipoff_utc": "2027-03-05T03:00:00+00:00",
+      "opponent": "Kings",
+      "opponent_abbr": "SAC",
+      "home_away": "away",
+      "location": "Golden 1 Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600909/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600922",
+      "season_phase": "regular",
+      "local_date": "2027-03-06",
+      "tipoff_utc": "2027-03-07T01:30:00+00:00",
+      "opponent": "Lakers",
+      "opponent_abbr": "LAL",
+      "home_away": "away",
+      "location": "Crypto.com Arena",
+      "tv": "ABC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600922/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600935",
+      "season_phase": "regular",
+      "local_date": "2027-03-08",
+      "tipoff_utc": "2027-03-09T02:30:00+00:00",
+      "opponent": "Mavericks",
+      "opponent_abbr": "DAL",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Peacock / NBC Sports Network",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600935/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600947",
+      "season_phase": "regular",
+      "local_date": "2027-03-10",
+      "tipoff_utc": "2027-03-11T00:30:00+00:00",
+      "opponent": "Raptors",
+      "opponent_abbr": "TOR",
+      "home_away": "away",
+      "location": "Scotiabank Arena",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600947/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600962",
+      "season_phase": "regular",
+      "local_date": "2027-03-12",
+      "tipoff_utc": "2027-03-13T00:30:00+00:00",
+      "opponent": "Celtics",
+      "opponent_abbr": "BOS",
+      "home_away": "away",
+      "location": "TD Garden",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600962/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600977",
+      "season_phase": "regular",
+      "local_date": "2027-03-14",
+      "tipoff_utc": "2027-03-14T18:30:00+00:00",
+      "opponent": "Spurs",
+      "opponent_abbr": "SAS",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ABC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600977/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022600993",
+      "season_phase": "regular",
+      "local_date": "2027-03-16",
+      "tipoff_utc": "2027-03-17T00:00:00+00:00",
+      "opponent": "Hornets",
+      "opponent_abbr": "CHA",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022600993/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601000",
+      "season_phase": "regular",
+      "local_date": "2027-03-17",
+      "tipoff_utc": "2027-03-17T23:30:00+00:00",
+      "opponent": "Mavericks",
+      "opponent_abbr": "DAL",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "ESPN",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601000/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601025",
+      "season_phase": "regular",
+      "local_date": "2027-03-20",
+      "tipoff_utc": "2027-03-21T00:00:00+00:00",
+      "opponent": "Grizzlies",
+      "opponent_abbr": "MEM",
+      "home_away": "away",
+      "location": "FedExForum",
+      "tv": "NBA TV",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601025/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601048",
+      "season_phase": "regular",
+      "local_date": "2027-03-23",
+      "tipoff_utc": "2027-03-24T03:00:00+00:00",
+      "opponent": "Suns",
+      "opponent_abbr": "PHX",
+      "home_away": "away",
+      "location": "Mortgage Matchup Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601048/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601057",
+      "season_phase": "regular",
+      "local_date": "2027-03-24",
+      "tipoff_utc": "2027-03-25T02:00:00+00:00",
+      "opponent": "Suns",
+      "opponent_abbr": "PHX",
+      "home_away": "away",
+      "location": "Mortgage Matchup Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601057/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601070",
+      "season_phase": "regular",
+      "local_date": "2027-03-26",
+      "tipoff_utc": "2027-03-27T00:00:00+00:00",
+      "opponent": "Clippers",
+      "opponent_abbr": "LAC",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601070/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601086",
+      "season_phase": "regular",
+      "local_date": "2027-03-28",
+      "tipoff_utc": "2027-03-28T23:30:00+00:00",
+      "opponent": "Timberwolves",
+      "opponent_abbr": "MIN",
+      "home_away": "away",
+      "location": "Target Center",
+      "tv": "Peacock / NBC",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601086/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601101",
+      "season_phase": "regular",
+      "local_date": "2027-03-30",
+      "tipoff_utc": "2027-03-31T01:00:00+00:00",
+      "opponent": "Jazz",
+      "opponent_abbr": "UTA",
+      "home_away": "away",
+      "location": "Delta Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601101/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601116",
+      "season_phase": "regular",
+      "local_date": "2027-04-01",
+      "tipoff_utc": "2027-04-02T01:30:00+00:00",
+      "opponent": "Lakers",
+      "opponent_abbr": "LAL",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601116/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601129",
+      "season_phase": "regular",
+      "local_date": "2027-04-03",
+      "tipoff_utc": "2027-04-03T21:00:00+00:00",
+      "opponent": "Pelicans",
+      "opponent_abbr": "NOP",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601129/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601154",
+      "season_phase": "regular",
+      "local_date": "2027-04-06",
+      "tipoff_utc": "2027-04-07T01:00:00+00:00",
+      "opponent": "Jazz",
+      "opponent_abbr": "UTA",
+      "home_away": "away",
+      "location": "Delta Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601154/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601171",
+      "season_phase": "regular",
+      "local_date": "2027-04-08",
+      "tipoff_utc": "2027-04-09T01:30:00+00:00",
+      "opponent": "Warriors",
+      "opponent_abbr": "GSW",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "Prime Video",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601171/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601179",
+      "season_phase": "regular",
+      "local_date": "2027-04-09",
+      "tipoff_utc": "2027-04-10T00:00:00+00:00",
+      "opponent": "Warriors",
+      "opponent_abbr": "GSW",
+      "home_away": "home",
+      "location": "Paycom Center",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601179/"
+      },
+      "coverage": {}
+    },
+    {
+      "game_id": "0022601197",
+      "season_phase": "regular",
+      "local_date": "2027-04-11",
+      "tipoff_utc": "2027-04-12T00:30:00+00:00",
+      "opponent": "Nuggets",
+      "opponent_abbr": "DEN",
+      "home_away": "away",
+      "location": "Ball Arena",
+      "tv": "League Pass",
+      "status": "scheduled",
+      "links": {
+        "nba": "https://www.nba.com/game/0022601197/"
+      },
+      "coverage": {}
+    }
+  ]
+}

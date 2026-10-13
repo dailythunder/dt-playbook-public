@@ -1,0 +1,161 @@
+{
+  "schema_version": "shaisweeper_public.v2",
+  "type": "shaisweeper",
+  "status": "ready",
+  "date": "2026-06-11",
+  "title": "40-Piece vs. Minnesota",
+  "summary": "True ShaiSweeper board. Bomb count equals Shai made field goals.",
+  "guide": "Use the reviewed 9x12 ShaiSweeper grid. Standard launch excludes free throws.",
+  "rows": 9,
+  "cols": 12,
+  "mode": "standard",
+  "source_url": "https://courtsketch.com/gameshots/22500064",
+  "game_id": "0022500064",
+  "nba_game_id": "0022500064",
+  "points": 40,
+  "fgm": 12,
+  "twopm": 11,
+  "threepm": 1,
+  "ftm": 15,
+  "bombs": 12,
+  "free_throw_policy": "standard launch excludes FTs; FT cells may be reviewed later as optional intermediate mode",
+  "shot_fit_status": "accepted_standard_9x12",
+  "fit_policy": "standard_9x12_v4_editor_approved",
+  "difficulty": "standard",
+  "foreground_clue": "Shai went for 40 in a home win over Minnesota.",
+  "hint_button_title": "Need a hint?",
+  "grid_id": "shaisweeper_standard_9x12_v4",
+  "standard_grid_id": "shaisweeper_standard_9x12_v4",
+  "hint_lines": [
+    "FGM: 12",
+    "3PM: 1"
+  ],
+  "cell_ids": [
+    "F3",
+    "G4",
+    "B5",
+    "E5",
+    "C6",
+    "F6",
+    "H6",
+    "F8",
+    "G8",
+    "C9",
+    "F9",
+    "G9"
+  ],
+  "fg_cell_ids": [
+    "F3",
+    "G4",
+    "B5",
+    "E5",
+    "C6",
+    "F6",
+    "H6",
+    "F8",
+    "G8",
+    "C9",
+    "F9",
+    "G9"
+  ],
+  "mine_cells": [
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      8,
+      6
+    ]
+  ],
+  "fg_mine_cells": [
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      2
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      8,
+      6
+    ]
+  ]
+}

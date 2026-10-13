@@ -1,5 +1,5 @@
 (() => {
-  const BUILD = '20260704-boxscore-only-trivia-v1';
+  const BUILD = '20261013-approved-week-v1';
   const css = ['daily-product-core.css','daily-product-games.css','daily-product-autocomplete.css'];
   const chunks = [
     'daily-product-core.js',
@@ -7,6 +7,7 @@
     'daily-product-connections.js',
     'daily-product-shaisweeper.js',
     'daily-product-lookback.js',
+    'daily-product-gameday.js',
     'daily-product-load.js'
   ];
   const here = document.currentScript?.src ? new URL('.', document.currentScript.src) : new URL('./', location.href);
