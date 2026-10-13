@@ -39,7 +39,10 @@
     if (!day) { DP.root.textContent = 'No Playbook days loaded.'; return; }
     DP.root.replaceChildren();
     if (DP.batch) DP.batch.textContent = `${DP.state.days.length} Playbook day${DP.state.days.length === 1 ? '' : 's'}`;
-    if (DP.state.notice) DP.child(DP.root, 'p', 'date', DP.state.notice);
+    if (DP.state.notice) {
+      const notice = DP.child(DP.root, 'p', 'date', DP.state.notice);
+      notice.style.gridColumn = '1 / -1';
+    }
     const tabs = DP.child(DP.root, 'aside', 'card');
     DP.child(tabs, 'div', 'dp-eyebrow', 'Dates');
     const list = DP.child(tabs, 'div', 'dp-tabs');

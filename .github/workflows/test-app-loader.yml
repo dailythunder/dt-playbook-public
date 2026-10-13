@@ -5,6 +5,7 @@ on:
       - 'playbook/assets/daily-product*.js'
       - 'playbook/data/current_season_public.json'
       - 'tests/*.cjs'
+      - 'tests/fixtures/*.json'
 permissions:
   contents: read
 jobs:
@@ -17,3 +18,4 @@ jobs:
           node-version: '22'
       - run: node tests/daily-product-load.test.cjs
       - run: node tests/daily-product-gameday.test.cjs
+      - run: node tests/daily-product-contracts.test.cjs
