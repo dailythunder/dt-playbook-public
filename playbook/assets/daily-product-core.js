@@ -38,7 +38,8 @@
     const day = DP.state.days[DP.state.active];
     if (!day) { DP.root.textContent = 'No Playbook days loaded.'; return; }
     DP.root.replaceChildren();
-    if (DP.batch) DP.batch.textContent = `${DP.state.days.length} public-safe day${DP.state.days.length === 1 ? '' : 's'}`;
+    if (DP.batch) DP.batch.textContent = `${DP.state.days.length} Playbook day${DP.state.days.length === 1 ? '' : 's'}`;
+    if (DP.state.notice) DP.child(DP.root, 'p', 'date', DP.state.notice);
     const tabs = DP.child(DP.root, 'aside', 'card');
     DP.child(tabs, 'div', 'dp-eyebrow', 'Dates');
     const list = DP.child(tabs, 'div', 'dp-tabs');
@@ -53,7 +54,9 @@
       skipped.textContent = `Skipped: ${DP.state.manifest.skipped.map(s => `${s.date} (${s.reason || s.status})`).join(', ')}`;
     }
     const main = DP.child(DP.root, 'div', 'dp-main');
+    if (DP.renderGameday) DP.renderGameday(main);
     const layout = DP.child(main, 'div', 'dp-layout');
+    if (day.modules.daily_puzzle) {
     const puzzle = DP.child(layout, 'section', 'card dp-puzzle-card');
     const pz = day.modules.daily_puzzle || {};
     DP.child(puzzle, 'div', 'dp-eyebrow', 'Daily Free Puzzle');
@@ -61,6 +64,7 @@
     if (pz.summary) DP.child(puzzle, 'p', '', pz.summary);
     if (pz.guide) DP.child(puzzle, 'p', 'date', pz.guide);
     DP.renderPuzzle(puzzle, pz);
+    }
     const right = DP.child(layout, 'div', 'dp-right');
     DP.renderLookback(right, day.modules.lookback);
     DP.renderArticle(main, day.modules.article);
